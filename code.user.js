@@ -1,19 +1,5 @@
 // ==UserScript==
 // @name TW Inventory Reloaded
-// @name:cs TW Inventory Reloaded
-// @name:de TW Inventory Reloaded
-// @name:el TW Inventory Reloaded
-// @name:es TW Inventory Reloaded
-// @name:fr TW Inventory Reloaded
-// @name:hu TW Inventory Reloaded
-// @name:it TW Inventory Reloaded
-// @name:nl TW Inventory Reloaded
-// @name:pl TW Inventory Reloaded
-// @name:pt TW Inventory Reloaded
-// @name:ro TW Inventory Reloaded
-// @name:ru TW Inventory Reloaded
-// @name:sk TW Inventory Reloaded
-// @name:tr TW Inventory Reloaded
 // @description Better Inventory and tools for The West!
 // @description:cs Lepší Inventář a nástroje pro The West!
 // @description:de Verbessertes Inventar und Tools für The West!
@@ -30,27 +16,25 @@
 // @description:sk Lepší Inventár a nástroje pre The West!
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
-// @author TauraScript, Jamza
-// @version 2.203.0
+// @author TauraScript, Jamza, Tom Robert
+// @version 2.204.0
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
-// @include http*://*.the-west.*/game.php*
-// @include http*://*.the-west.*.*/game.php*
+// @include https://*.the-west.*/game.php
 // @exclude https://classic.the-west.net*
 
-// @icon https://taurascript.github.io/TWIR/docs/icons/image18.png
+// @icon https://tomrobert.github.io/TWIR/docs/icons/image18.png
 // @namespace https://greasyfork.org/cs/users/153384/
 // @grant none
 
-// @updateURL https://taurascript.github.io/TWIR/code.user.js
-// @downloadURL http://greasyfork.org/scripts/373294-tw-inventory-reloaded/code/TW%20Inventory%20Reloaded.user.js
-// @supportURL https://github.com/taurascript/TWIR/issues
-// @homepage https://greasyfork.org/scripts/373294-tw-inventory-reloaded
-// @contributionURL https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=taurascript_public%40protonmail.com&item_name=TW+script&currency_code=EUR&source=url
+// @updateURL https://tomrobert.github.io/TWIR/code.user.js
+// @supportURL https://github.com/tomrobert/TWIR/issues
+// @homepage https://tomrobert.github.io/TWIR
+// @contributionURL https://buymeacoffee.com/jamzask
 
 // ==/UserScript==
 
-/*  Copyright (C) 2018-2021  TauraScript, Jamza <taurascript_public@protonmail.com>
+/*  Copyright (C) 2018-2024  TauraScript, Jamza
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 3 of the License, or
@@ -72,12 +56,11 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 script_name: "TW Inventory Reloaded",
-                version: "2.203.0",
+                version: "2.204.0",
                 author: "TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
-                website: "https://greasyfork.org/scripts/373294-tw-inventory-reloaded",
-                base_url: "https://taurascript.github.io/TWIR/",
+                base_url: "https://tomrobert.github.io/TWIR/",
                 langs:
                 {
                     br:
@@ -403,6 +386,9 @@
                         }
                     }
                 },
+                isNumber: function (n) {
+                  return !isNaN(parseFloat(n)) && isFinite(n);
+                },
                 initScript: function()
                 {
                     TWIR.beCompatible(), window.TWIR_init = setInterval(function()
@@ -436,8 +422,8 @@
                 },
                 registerApi: function()
                 {
-                    TheWestApi.register("TWIR", TWIR.script_name, TWIR.minGame, TWIR.maxGame, TWIR.author, TWIR.website)
-                        .setGui('<div style="margin-left: auto;margin-right: auto;width: 350px;"><img width="350" src="' + TWIR.base_url + 'docs/twir_biglogo.png"></img></div><div style="text-align: center;margin-left: auto;margin-right: auto;width: 500px; margin-top: 30px;"><form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="9U7R8YASZ3FXA" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" /></form></div><div style="margin-left: 55px; margin-top: 15px;"><span style="font-weight: bold;text-shadow: 2px 1px 2px #fae3ad;color: #5e321a;">credits:</span>Jamza (original author), Tom Robert, Thathanka Iyothanka and all translators!</div>'), $("div#ui_menubar")
+                    TheWestApi.register("TWIR", TWIR.script_name, TWIR.minGame, TWIR.maxGame, TWIR.author, TWIR.base_url)
+                        .setGui('<div style="margin-left: auto;margin-right: auto;width: 350px;"><img width="350" src="' + TWIR.base_url + 'docs/twir_biglogo.png"></img></div><div style="text-align: center;margin-left: auto;margin-right: auto;width: 500px; margin-top: 30px;"><form target="_blank" action="//www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="9U7R8YASZ3FXA" /><input type="image" src="//www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" /></form></div><div style="margin-left: 55px; margin-top: 15px;"><span style="font-weight: bold;text-shadow: 2px 1px 2px #fae3ad;color: #5e321a;">credits:</span>Jamza (original author), Tom Robert, Thathanka Iyothanka and all translators!</div>'), $("div#ui_menubar")
                         .find("#TWIR")
                         .length || $("div#ui_menubar")
                         .append($('<div class="ui_menucontainer" id="TWIR" />')
@@ -916,13 +902,13 @@
                                     .match(/rgba{0,1}\((.*?)\)/)[1];
                                 t && A(t)
                             })
-                            .mouseenter(function(e)
+                            .on("mouseenter", function(e)
                             {
                                 r.css("background-color", $(this)
                                         .css("background-color"))
                                     .removeClass("twir_hidden")
                             })
-                            .mouseleave(function(e)
+                            .on("mouseleave", function(e)
                             {
                                 r.addClass("twir_hidden")
                             })
@@ -1030,7 +1016,7 @@
                             {
                                 return e[1].lang.localeCompare(t[1].lang)
                             });
-                            for (var o = 0; o < r.length; o++) a.addItem(r[o][0], '<span style="background: url(//portal-bar.innogamescdn.com/images/west-sprite_01.1541670091.png) no-repeat top left;height: 12px;padding-left: 25px;background-position:' + r[o][1].bg_pos + ';">' + r[o][1].lang + "</span>");
+                            for (var o = 0; o < r.length; o++) a.addItem(r[o][0], '<span style="background: url(//portal-bar.innogamescdn.com/images/west-sprite_01.newRuFlag.1661155041.png) no-repeat top left;height: 12px;padding-left: 25px;background-position:' + r[o][1].bg_pos + ';">' + r[o][1].lang + "</span>");
                             a.select(TWIR.lang), a.addListener(function(e)
                             {
                                 e !== TWIR.lang ? B += 1 : B -= 1, M()
@@ -1328,9 +1314,9 @@
                         var t = new west.gui.Scrollpane,
                             i = $('<div style="text-align: center;margin-left: auto;margin-right: auto;display: block;font-size: 14px;margin-top: 15px;">' + TWIR_lang.donate_text + ":</div>"),
                             a = $('<div style="width: 400px;margin-left: auto;margin-right: auto;"/>'),
-                            r = $('<div><div style="text-align: center;"><form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="CCN4T9NYJGFVS" /><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" /></form></div></div>'),
+                            r = $('<div><div style="text-align: center;"><form target="_blank" action="//www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="CCN4T9NYJGFVS" /><input type="image" src="//www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate with PayPal button" /></form></div></div>'),
                             n = $('<div style="margin-top: 10px;width: 400px;margin-left: auto;margin-right: auto;"/>'),
-                            o = $('<div style="text-align: center;"><div style="color: #5e321a;font-weight: bold;font-size: 15px;">' + TWIR_lang.donate_paypal + ':</div><div style="padding-bottom: 5px;">Buy Jamza a beer (original author)</div><a href="https://www.buymeacoffee.com/JamzaSK" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Beer" style="height: 51px !important;width: 217px !important;" ></a></div>'),
+                            o = $('<div style="text-align: center;"><div style="color: #5e321a;font-weight: bold;font-size: 15px;">' + TWIR_lang.donate_paypal + ':</div><div style="padding-bottom: 5px;">Buy Jamza a beer (original author)</div><a href="//www.buymeacoffee.com/JamzaSK" target="_blank"><img src="//cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Beer" style="height: 51px !important;width: 217px !important;" ></a></div>'),
                             A = $('<div style="text-align:center;display:block;font-size:15px;color: #5e321a;font-weight: bold;">' + TWIR_lang.tyty + '!&nbsp;<img src="/images/chat/emoticons/smile.png?1" alt=":)"></div>');
                         a.append((new west.gui.Groupframe)
                             .appendToContentPane(r)
@@ -1386,7 +1372,7 @@
                                     .select(), document.execCommand("copy"), t.remove()
                             });
                             $(a.getContentPane())
-                                .append('<div style="width: 600px; font-weight: bold;color: red; margin: 25px auto 0 auto;">Please report following errors at <a href="https://github.com/taurascript/TWIR/issues" target="_blank">github/issues</a>.</div>', $('<div style="width: 600px; margin: 30px auto 0 auto;"></div>')
+                                .append('<div style="width: 600px; font-weight: bold;color: red; margin: 25px auto 0 auto;">Please report following errors at <a href="' + TWIR.base_url + '/issues" target="_blank">github/issues</a>.</div>', $('<div style="width: 600px; margin: 30px auto 0 auto;"></div>')
                                     .append((new west.gui.Groupframe)
                                         .appendToContentPane($('<div style="height: 200px;"/>')
                                             .append(r.getMainDiv()))
@@ -2150,7 +2136,7 @@
                     {
                         Guidepost.twir_show = Guidepost.twir_show || Guidepost.show;
                         var FOver = Guidepost.twir_show.toString();
-                        FOver = FOver.replace(/if\(type\=\='fort'\)/, "if(type=='employer'){msg=Map.Component.Quest.prototype.getTitle(); if(TWIR.NPCList.getFromList(id)) msg+=': ' + TWIR.NPCList.getFromList(id).name;} $&"), FOver = FOver.replace(/Guidepost\.start_walk\(id,type\);/, "if(type=='employer'){return QuestEmployerWindow.twir_startWalk({key:id,x:x,y:y}), QuestEmployerWindow.showEmployer(id, x, y)} $&"), FOver = FOver.replace(/\.addButton\('cancel'\)/, ".addButton(TWIR_lang.calc.switch_speed_btn,function(){TWIR.DressUpNwalk(id,x,y,type);})$&"), eval("Guidepost.show = " + FOver), QuestEmployerWindow.twir_startWalk = QuestEmployerWindow.twir_startWalk || QuestEmployerWindow.startWalk, QuestEmployerWindow.startWalk = function(e)
+                        FOver = FOver.replace(/if\(type\=\='fort'\)/, "if(type=='employer'){msg=GameMap.Component.Quest.prototype.getTitle(); if(TWIR.NPCList.getFromList(id)) msg+=': ' + TWIR.NPCList.getFromList(id).name;} $&"), FOver = FOver.replace(/Guidepost\.start_walk\(id,type\);/, "if(type=='employer'){return QuestEmployerWindow.twir_startWalk({key:id,x:x,y:y}), QuestEmployerWindow.showEmployer(id, x, y)} $&"), FOver = FOver.replace(/\.addButton\('cancel'\)/, ".addButton(TWIR_lang.calc.switch_speed_btn,function(){TWIR.DressUpNwalk(id,x,y,type);})$&"), eval("Guidepost.show = " + FOver), QuestEmployerWindow.twir_startWalk = QuestEmployerWindow.twir_startWalk || QuestEmployerWindow.startWalk, QuestEmployerWindow.startWalk = function(e)
                         {
                             if (!this.window || !$(this.window.divMain)
                                 .is(":visible")) return this.twir_startWalk.apply(this, arguments);
@@ -2368,13 +2354,7 @@
                     {
                         try
                         {
-                            var matchWindow = JobWindow.prototype.__twdb__getBestWearButton || JobWindow.prototype.getBestWearButton,
-                                mWStringed = matchWindow.toString(),
-                                obl = /<span>'\+(.*?)\+'<\/span>/.exec(mWStringed);
-                            obl && obl[1] && (obl = obl[1].match(/'(.*?)'/)[1]);
-                            var title = /title="'\+[\w\W]*'">/.exec(mWStringed);
-                            title && title[0] ? (title = title[0].match(/'(.*?)'/)[1], title.match(/<b>(.*)<\/b>/) && (title = title.match(/<b>(.*)<\/b>/)[0].replace(":", ""))) : title = "";
-                            var button = $('<div style="height: 55px;"><div class="job_bestwearbutton" title="' + title.escapeHTML() + '"><span>' + obl + "</span></div></div>");
+                            var button = $('<div style="height: 55px;"><div class="job_bestwearbutton"><span>' + 'Clothing' + "</span></div></div>");
                             BuildWindow.twir_init = BuildWindow.twir_init || BuildWindow.init;
                             var oldBuild = BuildWindow.twir_init.toString();
                             oldBuild = oldBuild.replace(/'<div\s+class\="build_left_divider"><\/div>'\+/, "")
@@ -2652,7 +2632,7 @@
                                     })
                                     .click(function()
                                     {
-                                        Map.center(Character.getPosition()
+                                        GameMap.center(Character.getPosition()
                                             .x, Character.getPosition()
                                             .y)
                                     }) : $([])
@@ -2662,7 +2642,7 @@
                                 {
                                     var n = e[r],
                                         o = {};
-                                    (o = AllianceWindow.twir_calcCoord4Worldmap([n.x, n.y])) && a.push($('<img onclick="javascript:void(Map.center(' + n.x + "," + n.y + '))" title="' + n.name + '" src="/images/map/minimap/icons/miniicon_alliance_' + t + '.png" class="mmap_wmappoint" style="cursor: pointer;" />')
+                                    (o = AllianceWindow.twir_calcCoord4Worldmap([n.x, n.y])) && a.push($('<img onclick="javascript:void(GameMap.center(' + n.x + "," + n.y + '))" title="' + n.name + '" src="/images/map/minimap/icons/miniicon_alliance_' + t + '.png" class="mmap_wmappoint" style="cursor: pointer;" />')
                                         .css(
                                         {
                                             left: o.x + i.left + "px",
@@ -3127,7 +3107,7 @@
                         A = (A = t > 0 ? Math.floor(e / t * 100) : 100) > 100 ? 100 : A;
                         var s = o.$("div.tw2gui_progressbar_contents", o.divMain),
                             l = o.$("div.tw2gui_progressbar_fill", o.divMain);
-                        return s.empty(), isDefined(n) ? s.append($("<span>" + ($.isNumeric(n) && n >= 1e5 ? TWIR.Util.replSum(n) : $.isNumeric(n) ? format_number(Math.floor(n)) : n) + "</span>")) : s.append("<span>" + (e >= 1e5 ? TWIR.Util.replSum(e) : format_number(Math.floor(e))) + " / " + (t >= 1e5 ? TWIR.Util.replSum(t) : format_number(Math.floor(t))) + (r && t > 0 ? " (" + A + "%)" : "") + "</span>"), 0 === t && l.css("width", t + "%"), o.divMain[0].outerHTML
+                        return s.empty(), isDefined(n) ? s.append($("<span>" + (TWIR.isNumber(n) && n >= 1e5 ? TWIR.Util.replSum(n) : TWIR.isNumber(n) ? format_number(Math.floor(n)) : n) + "</span>")) : s.append("<span>" + (e >= 1e5 ? TWIR.Util.replSum(e) : format_number(Math.floor(e))) + " / " + (t >= 1e5 ? TWIR.Util.replSum(t) : format_number(Math.floor(t))) + (r && t > 0 ? " (" + A + "%)" : "") + "</span>"), 0 === t && l.css("width", t + "%"), o.divMain[0].outerHTML
                     },
                     formatBonusInfo: function(e, t)
                     {
@@ -3549,11 +3529,11 @@
                             for (var g in Config.get("gui.animations") && (s < l && (o = o.replace(/<div\s+class\="tw2gui_progressbar_contents">(.*?)<\/div>/, '$& <div class="twir_winning_shine"></div>')), l < s && (A = A.replace(/<div\s+class\="tw2gui_progressbar_contents">(.*?)<\/div>/, '$& <div class="twir_winning_shine"></div>'))), n += '<td><div title="' + format_number(i[1].health) + "&nbsp;" + TWIR_lang.calc.fort_hp + '" style="min-width: 160px;">' + A + "</div></td>", n += '<td><div style="font-size: 15px; font-weight: bold; min-width: 25px; color: #FF0800;">' + (i[1].alive || 0) + "</div></td>", n += '<td><span style="font-size: 12px;font-weight: bold; color: #5e321a;">vs</span></td>', n += '<td><div style="font-size: 15px; font-weight: bold; min-width: 25px; color: #0F52BA;">' + (i[0].alive || 0) + "</div></td>", n += '<td><div title="' + format_number(i[0].health) + "&nbsp;" + TWIR_lang.calc.fort_hp + '" style="min-width: 160px;">' + o + "</div></td>", n += '<td><div style="width:65px;">' + (0 !== i[0].shotdmg ? '<span title="' + TWIR_lang.fortbattle.damage_inflicted + '"><img src="' + TWIR.images.tracker.dmg_blue + '"/></span><span style="vertical-align: middle;">' + format_number(i[0].shotdmg) + "</span>" : "") + "</div></td>", n += '</tr><tr><td></td><td style="width: 255px;">', i[1].chars) "-1" !== g && (n += '<div title="' + format_number(i[1].chars[g].health || 0) + "&nbsp;" + TWIR_lang.calc.fort_hp + '" class="twir_highlightcell twir_highlightcell-1-' + g + '" style="display: inline-block;margin-left: 4px;margin-right: 4px; ' + (i[1].chars[g].alive > 0 ? "cursor: pointer;" : "opacity: 0.6;") + '"><figure><img src="' + t.formatClass(g, !0) + '" width="25" height="auto" /><figcaption>' + (t[e].show_ko ? i[1].chars[g].total : i[1].chars[g].alive) + "</figcaption></figure></div>", "3" !== g && (n += "&nbsp;"));
                             for (var p in n += "</td>", n += '<td colspan="3"><div class="twir_tracker_timer" style="font-size: 12px;font-weight: bold; color: #5e321a; padding-top: 7px;"></div></td>', n += '<td style="width: 255px;">', i[0].chars) "-1" !== p && (n += '<div title="' + format_number(i[0].chars[p].health || 0) + "&nbsp;" + TWIR_lang.calc.fort_hp + '" class="twir_highlightcell twir_highlightcell-0-' + p + '" style="display: inline-block;margin-left: 4px;margin-right: 4px; ' + (i[0].chars[p].alive > 0 ? "cursor: pointer;" : "opacity: 0.6;") + '"><figure><img src="' + t.formatClass(p, !0) + '" width="25" height="auto" /><figcaption>' + (t[e].show_ko ? i[0].chars[p].total : i[0].chars[p].alive) + "</figcaption></figure></div>", "3" !== p && (n += "&nbsp;"));
                             return n += "</td><td></td></tr>", n += "</table>", t[e].Div_Topboard.append(n), t[e].Div_Topboard.find(".twir_highlightcell")
-                                .mouseenter(function(i)
+                                .on("mouseenter", function(i)
                                 {
                                     t.handleEventAction(i, e)
                                 })
-                                .mouseleave(function()
+                                .on("mouseleave", function()
                                 {
                                     t.unhighlightPlayers(e), t.highlightTrackedPlayers(e)
                                 }), i
@@ -3598,11 +3578,11 @@
                             }, function(t)
                             {
                                 return t.find(".twir_player")
-                                    .mouseenter(function(t)
+                                    .on("mouseenter", function(t)
                                     {
                                         i.handleEventAction(t, e)
                                     })
-                                    .mouseleave(function()
+                                    .on("mouseleave", function()
                                     {
                                         i.unhighlightPlayers(e), i.highlightTrackedPlayers(e)
                                     }), t.data(
@@ -4028,7 +4008,7 @@
                                 {
                                     for (
                                         /*! Trader offers */
-                                        var n = e.inventory.trader || [], o = west.window.shop.model._l10n.mouseovers.categories.trader, A = 0; A < n.length; A++)
+                                        var n = e.inventory.trader || [], A = 0; A < n.length; A++)
                                     {
                                         var s = ItemManager.get(n[A].item_id, !0),
                                             l = {
@@ -4039,7 +4019,7 @@
                                                 item_count: 1,
                                                 auction_price: null,
                                                 max_price: n[A].price_dollar,
-                                                seller_name: o || "Trader",
+                                                seller_name: "Trader",
                                                 seller_id: 0,
                                                 market_town_id: 0,
                                                 market_town: "",
@@ -4126,9 +4106,9 @@
                             }, e, t, i, 100, r, !0)
                         };
                         /*! Job popup */
-                        Map.PopupHandler.twir_getJobPopup = Map.PopupHandler.twir_getJobPopup || Map.PopupHandler.getJobPopup, Map.PopupHandler.getJobPopup = function(e)
+                        GameMap.PopupHandler.twir_getJobPopup = GameMap.PopupHandler.twir_getJobPopup || GameMap.PopupHandler.getJobPopup, GameMap.PopupHandler.getJobPopup = function(e)
                             {
-                                var i = Map.PopupHandler.twir_getJobPopup.apply(this, arguments);
+                                var i = GameMap.PopupHandler.twir_getJobPopup.apply(this, arguments);
                                 try
                                 {
                                     if (JobsModel.Beans[e.id] && TWIR.Features.get("pop_job_tooltip"))
@@ -4167,7 +4147,7 @@
                                 }
                                 catch (e)
                                 {
-                                    TWIR.error(e, "Map.PopupHandler.getJobPopup")
+                                    TWIR.error(e, "GameMap.PopupHandler.getJobPopup")
                                 }
                                 return i
                             },
@@ -4219,7 +4199,7 @@
                                 if (t = t.replace(/(<div\s+class\="inventory_popup_icon")(>)/, "$1 " + (TWIR.Util.isJokeTime() && void 0 !== this.options.twir_joke_rotate ? 'style="transform: rotate(' + this.options.twir_joke_rotate + 'deg);"' : "") + "$2" + (TWIR.Features.get("pop_owned_counts") ? '<div class="item"><span class="count" style="display:block;top:74px;left:3px">' + (Bag.getItemCount(this.item_obj.item_id) + n) + "</span></div>" : "")), TWIR.Features.get("pop_item_id") && (t = t.replace(/\<div\>\<img src\="(.*?)\/images\/fort\/battle\/divider\.png" alt\=""\>\<\/div\>/, '<div class="twir_id" style="margin-top: 2px;color: blue;text-align: center;font-size: 12px;">[item=<b>' + this.item_obj.item_id + '</b>]</div> <div style="text-align: center;"><img src="/images/fort/battle/divider.png" ></div>')), TWIR.Features.get("pop_display_event"))
                                 {
                                     var o = TWIR.setsCache[this.item_obj.set];
-                                    o && (t = t.replace(/(<p\s+class="inventory_popup_type">)([\S\s]*?<\/p>)/gi, '<div style="text-align: center; color: #804000;font-weight: bold;"><img src="' + TWIR.images.game_event[o[0]] + '" height="16" width="auto"></img><span style="margin-right: 10px;position: relative;font-size: 11px;font-style: italic;vertical-align: middle;">' + ($.isArray(TWIR_lang.events[o[0]]) ? TWIR_lang.events[o[0]][0] : TWIR_lang.events[o[0]]) + "&nbsp;" + o[1] + '</span></div> <p class="inventory_popup_type" style="max-width: 250px!important;margin-left: auto;margin-right: auto;margin-top: 5px;"> $2'))
+                                    o && (t = t.replace(/(<p\s+class="inventory_popup_type">)([\S\s]*?<\/p>)/gi, '<div style="text-align: center; color: #804000;font-weight: bold;"><img src="' + TWIR.images.game_event[o[0]] + '" height="16" width="auto"></img><span style="margin-right: 10px;position: relative;font-size: 11px;font-style: italic;vertical-align: middle;">' + (Array.isArray(TWIR_lang.events[o[0]]) ? TWIR_lang.events[o[0]][0] : TWIR_lang.events[o[0]]) + "&nbsp;" + o[1] + '</span></div> <p class="inventory_popup_type" style="max-width: 250px!important;margin-left: auto;margin-right: auto;margin-top: 5px;"> $2'))
                                 }
                                 if (this.item_obj.description.length && (t = t.replace(this.item_obj.description, '<span style="color: #007777;">' + this.item_obj.description + "</span>")), this.item_obj instanceof west.item.Weapon && TWIR.Features.get("pop_avg_dmg"))
                                 {
@@ -4532,8 +4512,8 @@
                             for (var a = new TWIR_Calc, r = function(e, t, a)
                                 {
                                     var r, n, o, A;
-                                    if (t.includes("_sector") && (A = !0, t = t.replace("_sector", "")), e && (r = TWIR.images[e]), r && (n = r[t]), !n && !$.isNumeric(t)) return "";
-                                    $.isNumeric(t) && (o = JobsModel.getById(Number(t)));
+                                    if (t.includes("_sector") && (A = !0, t = t.replace("_sector", "")), e && (r = TWIR.images[e]), r && (n = r[t]), !n && !TWIR.isNumber(t)) return "";
+                                    TWIR.isNumber(t) && (o = JobsModel.getById(Number(t)));
                                     var s = '<div style="width: 34px;height: 50px;position: relative;background: rgba(127, 111, 85, 0.7);display: inline-block;margin-top: 5px;margin-right: 5px;">';
                                     return i && (s = '<div style="width: 25px;height: 30px;position: relative;background: rgba(127, 111, 85, 0.7);display: inline-block;margin-right: 2px;">'), s += '<img src="' + (n || (o ? "/images/jobs/" + o.get("shortname") + ".png" : "/images/items/unknown.png")) + '" style="position: absolute; ' + (CharacterSkills.allSkillKeys.includes(t) ? i ? "top: 4px; width: 22px; right: 2px;" : "top: 8px; width: 34px; right: 0;" : (i ? "width: 18px;" : "width: 28px;") + "left: 3px;right: 4px;top: 3px;") + '"/>', A && (s += '<div style="width: 9px;height: 9px;position: absolute;right: 1px;bottom: ' + (i ? "11px" : "18px") + "; background: url(" + TWIR.images.sector + ');"></div>'), s += '<div style="background: url(/images/tw2gui/pagebar/bg.png);' + (i ? "width: 24px;height: 10px;position: absolute;line-height: 12px;font-size:" + (a.toString()
                                         .length > 3 ? "8px;" : "10px;") : "width: 34px;height: 17px;position: absolute;line-height: 17px;font-size: 11px;") + 'bottom: 0; color: #FFE7B1;text-align: center;">' + (a || 0) + (["dollar", "experience", "luck", "drop", "regen", "ms"].includes(t) ? "%" : "") + "</div>", s += "</div>"
@@ -4753,7 +4733,7 @@
                         ! function()
                         {
                             for (var t in e.keyMapping)
-                                if (!$.isNumeric(t))
+                                if (!TWIR.isNumber(t))
                                 {
                                     var i;
                                     if ("object" == typeof e.keyMapping[t])
@@ -4817,7 +4797,7 @@
                     {
                         var t;
                         for (var i in this.keyMapping)
-                            if (!$.isNumeric(i))
+                            if (!TWIR.isNumber(i))
                                 if ("object" == typeof this.keyMapping[i])
                                     for (var a in this.keyMapping[i]) this.isEqual(this.keyMapping[i][a], e) && (t = i);
                                 else this.isEqual(this.keyMapping[i], e) && (t = i);
@@ -5021,7 +5001,7 @@
                             var A = a.items[i].elements[n];
                             A.dom.off(), r && A.dom.is(":visible") ? (a.items[i].focused = n, A.dom.addClass("focused"), r = !1) : A.dom.removeClass("focused");
                             var s = "";
-                            A.dom.mouseenter(function(e)
+                            A.dom.on("mouseenter", function(e)
                                 {
                                     return function()
                                     {
@@ -5060,11 +5040,11 @@
                                 a.search(a.items[i].GuiTextfield.getValue(), null, i)
                             });
                         a.getMainDiv(i)
-                            .mouseenter(function()
+                            .on("mouseenter", function()
                             {
                                 a.items[i].Div_Filters.show()
                             })
-                            .mouseleave(function()
+                            .on("mouseleave", function()
                             {
                                 a.items[i].Div_Filters.hide()
                             }), a.items[i].divMain.is(":visible") || a.items[i].divMain.show(), isDefined(e) ? ($(a.items[i].GuiTextfield.getField())
@@ -5163,7 +5143,7 @@
                                 for (var r = a.msg.search_result, n = 0; n < r.length; n++)
                                     if (r[n].auction_ends_in <= 0 || !isNaN(parseInt(r[n].max_price)) && r[n].current_bid == parseInt(r[n].max_price))
                                     {
-                                        var o = Map.calcWayTime(TWIR.Util.lastPos(),
+                                        var o = GameMap.calcWayTime(TWIR.Util.lastPos(),
                                         {
                                             x: r[n].market_town_x,
                                             y: r[n].market_town_y
@@ -5195,7 +5175,7 @@
                                     for (var r = a.msg.search_result, n = 0; n < r.length; n++)
                                         if (r[n].auction_ends_in <= 0 || !isNaN(parseInt(r[n].max_price)) && r[n].current_bid == parseInt(r[n].max_price))
                                         {
-                                            var o = Map.calcWayTime(TWIR.Util.lastPos(),
+                                            var o = GameMap.calcWayTime(TWIR.Util.lastPos(),
                                                 {
                                                     x: r[n].market_town_x,
                                                     y: r[n].market_town_y
@@ -5332,7 +5312,7 @@
                                         Guidepost.show(e[1].id, e[1].posx, e[1].posy, "town");
                                         break;
                                     case 2:
-                                        Map.center(e[1].posx, e[1].posy);
+                                        GameMap.center(e[1].posx, e[1].posy);
                                         break;
                                     case 1:
                                         var t = Object.values(e[1].items)
@@ -5505,7 +5485,7 @@
                                         TWIR.MarketMap.show();
                                         break;
                                     case 0:
-                                        Map.center(t.posx, t.posy);
+                                        GameMap.center(t.posx, t.posy);
                                         var i = Object.values(t.items),
                                             a = i.filter(function(e)
                                             {
@@ -5596,7 +5576,7 @@
                             {
                                 selectbox.addEmpty(), $.each(data, function(e, t)
                                 {
-                                    t.distance = Map.calcWayTime(TWIR.Util.lastPos(),
+                                    t.distance = GameMap.calcWayTime(TWIR.Util.lastPos(),
                                     {
                                         x: t.posx,
                                         y: t.posy
@@ -5620,7 +5600,7 @@
                             {
                                 $.each(list, function(e, t)
                                 {
-                                    t.distance = Map.calcWayTime(TWIR.Util.lastPos(),
+                                    t.distance = GameMap.calcWayTime(TWIR.Util.lastPos(),
                                     {
                                         x: t.posx,
                                         y: t.posy
@@ -5679,7 +5659,7 @@
                                                 {
                                                     return function()
                                                     {
-                                                        Map.center(e.posx, e.posy), "town" === e.type ? HotelWindow.open(e.id) : "fort" === e.type && FortBarracksWindow.open(e.id), selectbox.hide()
+                                                        GameMap.center(e.posx, e.posy), "town" === e.type ? HotelWindow.open(e.id) : "fort" === e.type && FortBarracksWindow.open(e.id), selectbox.hide()
                                                     }
                                                 }(i))
                                                 .after($('<li><span style="color: #7b5538; margin-left: 20px;">&#8618; ' + TWIR_lang.informative.distance + ":&nbsp;" + i.distance.formatDuration() + "</span></li>")
@@ -5768,7 +5748,7 @@
                                 .show();
                             var i = [],
                                 a = t.quest_locations;
-                            for (var r in a) a[r] && a[r][0] && i.push([parseInt(a[r][0][0] / Map.tileSize), parseInt(a[r][0][1] / Map.tileSize)]);
+                            for (var r in a) a[r] && a[r][0] && i.push([parseInt(a[r][0][0] / GameMap.tileSize), parseInt(a[r][0][1] / GameMap.tileSize)]);
                             Ajax.get("map", "get_complete_data",
                             {
                                 tiles: JSON.stringify(i)
@@ -5817,7 +5797,7 @@
                                 .setWidth(300);
                             $.each(t, function(e, t)
                             {
-                                t.distance = Map.calcWayTime(TWIR.Util.lastPos(),
+                                t.distance = GameMap.calcWayTime(TWIR.Util.lastPos(),
                                 {
                                     x: t.posx,
                                     y: t.posy
@@ -5837,7 +5817,7 @@
                                 switch (e[1])
                                 {
                                     case 0:
-                                        Map.center(t.posx, t.posy), QuestEmployerWindow.showEmployer(t.key, t.posx, t.posy);
+                                        GameMap.center(t.posx, t.posy), QuestEmployerWindow.showEmployer(t.key, t.posx, t.posy);
                                         break;
                                     case 1:
                                         Guidepost.show(t.key, t.posx, t.posy, "employer")
@@ -6601,7 +6581,7 @@
                                         })
                                 }(1 === b[0].length || 2 === v.length && 2 === b[0].length) && r[m].css("filter", "opacity(0.5)"), r[m].data("set", m)
                                     .addClass("twir_set_collector_element")
-                                    .mouseenter(function(e)
+                                    .on("mouseenter", function(e)
                                     {
                                         return function()
                                         {
@@ -6633,7 +6613,7 @@
                     },
                     getPopupXHTML: function(e)
                     {
-                        return "<div>" + e.name + '</div><div style="text-align: center; display: ' + (e.event ? "block" : "none") + ';color: #804000;font-weight: bold;"><img src="' + (e.event ? TWIR.images.game_event[e.event] : "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") + '" height="16" width="auto"></img><span style="margin-right: 10px;position: relative;font-size: 11px;font-style: italic;vertical-align: middle;">' + (e.event ? ($.isArray(TWIR_lang.events[e.event]) ? TWIR_lang.events[e.event][0] : TWIR_lang.events[e.event]) + "&nbsp;" + e.year : "") + "</span></div>"
+                        return "<div>" + e.name + '</div><div style="text-align: center; display: ' + (e.event ? "block" : "none") + ';color: #804000;font-weight: bold;"><img src="' + (e.event ? TWIR.images.game_event[e.event] : "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") + '" height="16" width="auto"></img><span style="margin-right: 10px;position: relative;font-size: 11px;font-style: italic;vertical-align: middle;">' + (e.event ? (Array.isArray(TWIR_lang.events[e.event]) ? TWIR_lang.events[e.event][0] : TWIR_lang.events[e.event]) + "&nbsp;" + e.year : "") + "</span></div>"
                     },
                     getSetIconXHTML: function(e, t)
                     {
@@ -6705,15 +6685,15 @@
                         for (var o in i)
                         {
                             if (i[o]) var A = i[o].obj;
-                            n("wear_buy_price", $.isNumeric(A.price) ? 1 * A.price : 0), n("wear_sell_price", $.isNumeric(A.sell_price) ? 1 * A.sell_price : 0)
+                            n("wear_buy_price", TWIR.isNumber(A.price) ? 1 * A.price : 0), n("wear_sell_price", TWIR.isNumber(A.sell_price) ? 1 * A.sell_price : 0)
                         }
                         for (var s in t)
                             if (t[s])
                             {
                                 var l = t[s].obj,
-                                    g = $.isNumeric(l.price) ? l.price * t[s].count : 0,
-                                    p = $.isNumeric(l.sell_price) ? l.sell_price * t[s].count : 0;
-                                switch (n("inventory_buy_price", $.isNumeric(l.price) ? l.price * t[s].count : 0), n("inventory_sell_price", $.isNumeric(l.sell_price) ? l.sell_price * t[s].count : 0), 1 != t[s].count || i[l.type] && i[l.type].obj.item_id === l.item_id || (n("unique_buy_price", $.isNumeric(l.price) ? 1 * l.price : 0), n("unique_sell_price", $.isNumeric(l.sell_price) ? 1 * l.sell_price : 0)), "yield" !== l.type && null !== l.set && (r("set_count", 1), r("set_total", t[s].count)), "yield" !== l.type && "recipe" !== l.type && (!e.count_max.obj_max || t[s].count > e.count_max.obj_max.count) && (e.count_max.obj_max = {
+                                    g = TWIR.isNumber(l.price) ? l.price * t[s].count : 0,
+                                    p = TWIR.isNumber(l.sell_price) ? l.sell_price * t[s].count : 0;
+                                switch (n("inventory_buy_price", TWIR.isNumber(l.price) ? l.price * t[s].count : 0), n("inventory_sell_price", TWIR.isNumber(l.sell_price) ? l.sell_price * t[s].count : 0), 1 != t[s].count || i[l.type] && i[l.type].obj.item_id === l.item_id || (n("unique_buy_price", TWIR.isNumber(l.price) ? 1 * l.price : 0), n("unique_sell_price", TWIR.isNumber(l.sell_price) ? 1 * l.sell_price : 0)), "yield" !== l.type && null !== l.set && (r("set_count", 1), r("set_total", t[s].count)), "yield" !== l.type && "recipe" !== l.type && (!e.count_max.obj_max || t[s].count > e.count_max.obj_max.count) && (e.count_max.obj_max = {
                                         item_id: l.item_base_id,
                                         count: t[s].count
                                     }), l.type)
@@ -6947,7 +6927,7 @@
                                         .append($('<div classs="twir_inv_iconpane" style="display: inline-block;width: 16px;margin-left: -16px;"></div>')
                                             .append(Inventory.guiElements.twir_searchStatsIcon.getMainDiv()
                                                 .addClass("twir_hidden")), Inventory.guiElements.searchTextfield.getMainDiv()
-                                            .keypress(TWIR.Util.delay(function(e)
+                                            .on("keypress", TWIR.Util.delay(function(e)
                                             {
                                                 13 == e.keyCode && Inventory.search()
                                             }, 500))), $("<div class='bag_navigation twir_hidden'></div>")
@@ -7644,7 +7624,7 @@
                             r = TWIR.Crafting.recipes,
                             n = new RegExp("^.*" + e + "(.*)$", "i"),
                             o = [];
-                        for (var A in a) t = a[A].obj, (n.test(t.name) || $.isNumeric(e) && t.item_id == e) && r[t.item_id] && (i.push(a[A]), o = o.concat(TWIR.Crafting.getAllResources(t.item_id, !0)));
+                        for (var A in a) t = a[A].obj, (n.test(t.name) || TWIR.isNumber(e) && t.item_id == e) && r[t.item_id] && (i.push(a[A]), o = o.concat(TWIR.Crafting.getAllResources(t.item_id, !0)));
                         for (var s in a) t = a[s].obj, o.includes(t.item_id) && i.push(a[s]);
                         return i
                     },
@@ -8141,7 +8121,7 @@
                                 if (e === a.length) ! function(e, t, i)
                                 {
                                     if ($.isEmptyObject(e)) return;
-                                    WearSet.setUpBonus(e.setBonuses), WearSet.setUpItems(e.setItems), WearSet.workPointBonus = e.workPointBonus;
+                                    WearSet.setUpItems(e.setItems), WearSet.workPointBonus = e.workPointBonus;
                                     for (var a = 0; a < i.length; a++) Wear.remove(i[a].type), "right_arm" == i[a].type && EventHandler.signal("character_weapon_changed", [i[a]]);
                                     for (var r = 0; r < t.length; r++) Wear.add(t[r].item_id), "right_arm" == t[r].type && EventHandler.signal("character_weapon_changed", [t[r]]);
                                     Bag.updateChanges(e.changes, "wear"), CharacterSkills.updateAllBonuspoints(e.bonus.allBonuspoints), Character.setSpeed(e.speed), Character.calcMaxHealth(), EventHandler.signal("health", [Character.health, Character.maxHealth]), EventHandler.signal("wear_changed", [
@@ -8397,7 +8377,7 @@
                                     }))
                         }
                         return n.getMainDiv()
-                            .mouseenter(function()
+                            .on("mouseenter", function()
                             {
                                 o.getMainDiv()
                                     .show(), $(".item_level", n.getMainDiv())
@@ -8406,7 +8386,7 @@
                                         left: "10px"
                                     }), A.removeClass("twir_hidden")
                             })
-                            .mouseleave(function()
+                            .on("mouseleave", function()
                             {
                                 o.getMainDiv()
                                     .hide(), $(".item_level", n.getMainDiv())
@@ -8563,7 +8543,7 @@
                             /*! Jobs */
                             var l = $.extend(
                             {}, t.job, i.job);
-                            for (var g in l) $.isNumeric(g) || (g === Object.keys(l)[0] && (e += '<tr style="height: 16px;"/>'), e += a(t.job[g] || 0, i.job[g] || 0, TWIR_lang.calc[g], g));
+                            for (var g in l) TWIR.isNumber(g) || (g === Object.keys(l)[0] && (e += '<tr style="height: 16px;"/>'), e += a(t.job[g] || 0, i.job[g] || 0, TWIR_lang.calc[g], g));
                             /*! Fortbattle */
                             var p = $.extend(
                             {}, t.fortbattle, i.fortbattle);
@@ -8641,7 +8621,7 @@
                                                             var a = parseInt(t);
                                                             return a || e
                                                         })
-                                                        .trim(), $.isNumeric(i) && ItemManager.get(i, !0)))
+                                                        .trim(), TWIR.isNumber(i) && ItemManager.get(i, !0)))
                                                 {
                                                     for (var a in i = parseInt(i), TWIR.ItemList.items[e + "_combo"].elements)
                                                     {
@@ -8864,7 +8844,7 @@
                             .data("id", i);
                         var l = $("<div>" + s(TWIR_lang.calc.equipment_number, "#" + (i + 1)) + ":</div>"),
                             g = $('<div style="float: right";>' + TWIR.Popups.bonusXHTML(e.stats ? TWIR_Calc.mergeBonus(e.stats) : o, this.options.skills, !0) + "</div>")
-                            .mouseenter(function()
+                            .on("mouseenter", function()
                             {
                                 $(this)
                                     .hasClass("hasMousePopup") || $(this)
@@ -9110,13 +9090,13 @@
                             {
                                 var n = $('<div title="' + TWIR_lang.calc[r] + '" class="twir_ComboCalc_choose" style="display:inline-block;width: 40px; height: 40px; margin-bottom: 2px;position: relative;">' + e.getBonImg(r, 28, "job_bonus", !0) + '<div style="background: url(' + TWIR.images.skill_frame_1 + ');background-size: cover;position: absolute;height: 40px;width: 40px;display: block;top: 2px;left: 1px;"></div></div>')
                                     .data("sel", r)
-                                    .mouseenter(function()
+                                    .on("mouseenter", function()
                                     {
                                         e.selectors.skills[$(this)
                                                 .data("sel")].selector.getMainDiv()
                                             .show()
                                     })
-                                    .mouseleave(function()
+                                    .on("mouseleave", function()
                                     {
                                         e.selectors.skills[$(this)
                                                 .data("sel")].selector.getMainDiv()
@@ -9161,13 +9141,13 @@
                                 {
                                     var a = $('<div title="' + CharacterSkills.keyNames[i] + '" class="twir_ComboCalc_choose" style="display:inline-block;width: 40px; height: 40px; margin-bottom: 2px;position: relative;">' + e.getCustomImg(i) + "</div>")
                                         .data("sel", i)
-                                        .mouseenter(function()
+                                        .on("mouseenter", function()
                                         {
                                             e.selectors.skills[$(this)
                                                     .data("sel")].selector.getMainDiv()
                                                 .show()
                                         })
-                                        .mouseleave(function()
+                                        .on("mouseleave", function()
                                         {
                                             e.selectors.skills[$(this)
                                                     .data("sel")].selector.getMainDiv()
@@ -9949,7 +9929,7 @@
                             {
                                 e.version.match(/(\d+[.]\d+)(?:[.]\d+){0,1}/);
                                 new west.gui.Dialog("TWIR " + TWIR.version + " > " + e.version, $('<div style="max-width: 450px;"><div>')
-                                        .append("<div>" + TWIR_lang.update_message + "</div><br/>", "<div><b>" + TWIR_lang.changes + "</b></div></br>", o.append(n.getMainDiv()), "<br><hr><br><div>" + TWIR_lang.donate_text_2.replace(/\%(.*?)\%/, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9U7R8YASZ3FXA&source=url">$1</a>.') + "</div>"), west.gui.Dialog.SYS_WARNING)
+                                        .append("<div>" + TWIR_lang.update_message + "</div><br/>", "<div><b>" + TWIR_lang.changes + "</b></div></br>", o.append(n.getMainDiv()), "<br><hr><br><div>" + TWIR_lang.donate_text_2.replace(/\%(.*?)\%/, '<a target="_blank" href="//buymeacoffee.com/jamzask">$1</a>.') + "</div>"), west.gui.Dialog.SYS_WARNING)
                                     .addButton(TWIR_lang.download, function()
                                     {
                                         window.open(TWIR.base_url + "code.user.js")
@@ -9958,7 +9938,7 @@
                                     .show(), clearInterval(e.interval)
                             }
                             else e.lastVersion && e.lastVersion === TWIR.version || new west.gui.Dialog("TWIR " + TWIR.version, $('<div style="max-width: 450px;"><div>')
-                                    .append("<div><b>" + TWIR_lang.changes + "</b></div></br>", o.append(n.getMainDiv()), "<br><hr><br><div>" + TWIR_lang.donate_text_2.replace(/\%(.*?)\%/, '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9U7R8YASZ3FXA&source=url">$1</a>.') + "</div>"), west.gui.Dialog.SYS_OK)
+                                    .append("<div><b>" + TWIR_lang.changes + "</b></div></br>", o.append(n.getMainDiv()), "<br><hr><br><div>" + TWIR_lang.donate_text_2.replace(/\%(.*?)\%/, '<a target="_blank" href="//buymeacoffee.com/jamzask">$1</a>.') + "</div>"), west.gui.Dialog.SYS_OK)
                                 .addButton("ok", function()
                                 {
                                     localStorage.setItem("twir_lastVersion", TWIR.version)
