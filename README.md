@@ -4,7 +4,7 @@
 > Step 1:
 ### ScriptManager
 
-<img src="https://taurascript.github.io/TWIR/docs/icons/firefox.png"> [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/") or [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) <br />
+<img src="https://taurascript.github.io/TWIR/docs/icons/firefox.png"> [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/) <br />
 <img src="https://taurascript.github.io/TWIR/docs/icons/chrome.png"> [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) <br />
 <img src="https://taurascript.github.io/TWIR/docs/icons/opera.png"> [Tampermonkey](https://addons.opera.com/extensions/details/tampermonkey-beta/) <br />
 <img src="https://taurascript.github.io/TWIR/docs/icons/msedge.png"> [Tampermonkey](https://www.tampermonkey.net/?ext=dhdg&browser=edge) <br />
@@ -13,12 +13,6 @@
 ### Userscript
 
 [Click here to install](https://taurascript.github.io/TWIR/code.user.js) 
-
-# Donate
-
-**Your generous donation will help to continue to develop and improve this userscript!**
-
-<img src="https://taurascript.github.io/TWIR/docs/icons/paypal.png"> Paypal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=taurascript_public%40protonmail.com&item_name=TW+script&currency_code=EUR&source=url)
 
 
 # Features
