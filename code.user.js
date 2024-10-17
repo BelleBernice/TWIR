@@ -17,7 +17,7 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author TauraScript, Jamza, Tom Robert
-// @version 2.204.0
+// @version 2.204.1
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php
@@ -56,11 +56,12 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 script_name: "TW Inventory Reloaded",
-                version: "2.204.0",
+                version: "2.204.1",
                 author: "TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
                 base_url: "https://tomrobert.github.io/TWIR/",
+                base_url2: "//github.com/tomrobert/TWIR/",
                 langs:
                 {
                     br:
@@ -1372,7 +1373,7 @@
                                     .select(), document.execCommand("copy"), t.remove()
                             });
                             $(a.getContentPane())
-                                .append('<div style="width: 600px; font-weight: bold;color: red; margin: 25px auto 0 auto;">Please report following errors at <a href="' + TWIR.base_url + '/issues" target="_blank">github/issues</a>.</div>', $('<div style="width: 600px; margin: 30px auto 0 auto;"></div>')
+                                .append('<div style="width: 600px; font-weight: bold;color: red; margin: 25px auto 0 auto;">Please report following errors at <a href="' + TWIR.base_url2 + 'issues" target="_blank">github/issues</a>.</div>', $('<div style="width: 600px; margin: 30px auto 0 auto;"></div>')
                                     .append((new west.gui.Groupframe)
                                         .appendToContentPane($('<div style="height: 200px;"/>')
                                             .append(r.getMainDiv()))
