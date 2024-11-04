@@ -17,7 +17,7 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author TauraScript, Jamza, Tom Robert
-// @version 2.204.1
+// @version 2.204.2
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php
@@ -56,7 +56,7 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 script_name: "TW Inventory Reloaded",
-                version: "2.204.1",
+                version: "2.204.2",
                 author: "TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
@@ -3038,19 +3038,9 @@
                                 {
                                     var r = i[a].ranks,
                                         n = Chat.rankTitles,
-                                        o = ((r[e] ||
-                                            {})
-                                            .rank || 0) + 2,
-                                        A = {
-                                            0: ["traitor", n.traitor],
-                                            1: ["reservist", n.reservist],
-                                            2: ["recruit", n.recruit],
-                                            3: ["private", n.private],
-                                            4: ["sergeant", n.sergeant],
-                                            5: ["captain", n.captain],
-                                            6: ["general", n.general]
-                                        };
-                                    return '<span title="' + A[o][1] + '" style="margin-left: 2px;"><img class="chat_servicegrade_' + A[o][0] + '" src="/images/transparent.png"/></span>'
+                                        o = ((r[e] || {}).rank || 0) + 2,
+                                        A = ["traitor", "reservist", "recruit", "private", "sergeant", "captain", "major_general", "general"];
+                                    return '<span title="' + n[A[o]] + '" style="margin-left: 2px;"><img class="chat_servicegrade_' + A[o] + '" src="/images/transparent.png"/></span>'
                                 }
                         }
                         catch (e)
