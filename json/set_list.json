@@ -1910,5 +1910,9 @@
     "western_friday_2024_weapon_set": ["sale", "2024", "1"],
     "holiday_2024_set_1": ["xmas", "2024", "1"],
     "holiday_2024_set_2": ["xmas", "2024", "1"],
-    "holiday_2024_set_3": ["xmas", "2024", "1"]
+    "holiday_2024_set_3": ["xmas", "2024", "1"],
+"valentine_2025_set_1": ["valentine", "2025"],
+"valentine_2025_set_2": ["valentine", "2025", "1"],
+"valentine_2025_set_3": ["valentine", "2025", "1"],
+"valentine_2025_set_4": ["valentine", "2025", "1"]
 }
