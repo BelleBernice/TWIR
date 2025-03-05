@@ -204,8 +204,10 @@
         "ml_sleep": "Add a new button to show the \"Sleep menu\" on the left side",
         "ml_npc": "Add a new button to show the \"Quest givers\" menu on the left side",
         "prof_craft_points": "Show the crafting points in player profiles",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)",
+        "fb_travel_button": "Add a button to travel to the fort in the fort battles window",
         "fb_topic": "Show chat topic in the battle preparation window",
-        "fb_travel_button": "Add a button to move to the fort in the fort battles window",
         "fb_online_status": "Add online status of players to the fort battle map's popup",
         "fb_ranks": "Add player's rank to the fort battle map's popup",
         "fb_ali_name": "Show Alliance name in the town overview",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Class specific icons in the fortbattle preparation window",
         "quest_color": "Change the color of quests that I can complete",
         "inv_size": "Smaller inventory",
-        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling",
-        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)"
+        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling"
     },
     "events": {
         "xmas": [
