@@ -204,8 +204,10 @@
         "ml_sleep": "SleepMenu aktivieren",
         "ml_npc": "NPC locator aktivieren",
         "prof_craft_points": "Zeige Handwerkspunkte im Profil",
-        "fb_topic": "Chat-Topic im FK-Vorbereitungsfenster zeigen",
+        "emp_speed_set": "Geschwindigkeits-Set Option auch bei den Questgebern hinzufügen",
+        "smart_speed_set": "Berechne das Geschwindigkeits-Set, um möglichst wenig LP zu verlieren",
         "fb_travel_button": "Sofortreise zum FK-Fenster hinzufügen",
+        "fb_topic": "Chat-Topic im FK-Vorbereitungsfenster zeigen",
         "fb_online_status": "Onlinestatus auf der FK-Karte anzeigen",
         "fb_ranks": "Ränge auf der FK-Karte zeigen",
         "fb_ali_name": "Bündnisname im Stadtprofil zeigen",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Charakterklasse-Icon im FK-Vorbereitungsfenster",
         "quest_color": "Abschliessbare Quests farbig hervorheben.",
         "inv_size": "Kleineres Inventar",
-        "inv_max_slots": "Maximale Anzahl an Reihen im Inventar %1 (Höhere Werte können Ruckeln verursachen beim Scrollen)",
-        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)"
+        "inv_max_slots": "Maximale Anzahl an Reihen im Inventar %1 (Höhere Werte können Ruckeln verursachen beim Scrollen)"
     },
     "events": {
         "xmas": [
