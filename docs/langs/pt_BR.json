@@ -204,8 +204,10 @@
         "ml_sleep": "Adicionar um novo botão para mostrar um menu de dormir no lado esquerdo",
         "ml_npc": "Adicionar um novo botão para mostrar os empregadores de aventura no lado esquerdo",
         "prof_craft_points": "Mostrar os pontos de ofício no perfil de jogador",
-        "fb_topic": "Mostrar o tópico do chat na janela de preparação de batalha",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Calculadora inteligente para calcular velocidade (sem perder HP, se possível)",
         "fb_travel_button": "Adicionar um botão para andar ao forte nas janelas de batalha de forte",
+        "fb_topic": "Mostrar o tópico do chat na janela de preparação de batalha",
         "fb_online_status": "Adicionar estado online no mapa de batalha",
         "fb_ranks": "Adicionar patente do jogador no mapa de batalha",
         "fb_ali_name": "Mostrar o nome da aliança na visão de cidade",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Ícones de especificação de classe",
         "quest_color": "Mudar a cor das quets que eu posso completar",
         "inv_size": "Inventário menor",
-        "inv_max_slots": "Máximo de números de linhas no inventário %1. Cuidado: números altos podem causar travamento",
-        "smart_speed_set": "Calculadora inteligente para calcular velocidade (sem perder HP, se possível)"
+        "inv_max_slots": "Máximo de números de linhas no inventário %1. Cuidado: números altos podem causar travamento"
     },
     "events": {
         "xmas": [
