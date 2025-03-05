@@ -204,8 +204,10 @@
         "ml_sleep": "Dodaj przycisk do pokazania menu hotelu",
         "ml_npc": "Dodaj przycisk do pokazania menu NPC",
         "prof_craft_points": "Pokaż punkty rzemiosła gracza",
-        "fb_topic": "Dodaj temat czatu w oknie przygotowania do bitwy",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Mądrzejsze obliczanie zestawu pod prędkość by nie tracić hp jeśli to możliwe",
         "fb_travel_button": "Dodaj przycisk szybkiej podróży w oknie bitew o fort",
+        "fb_topic": "Dodaj temat czatu w oknie przygotowania do bitwy",
         "fb_online_status": "Pokaż status online gracza w czasie bitwy",
         "fb_ranks": "Pokaż rangę danego gracza w czasie bitwy",
         "fb_ali_name": "Pokaż sojusz w oknie miasta",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Ikony klasy postaci w przygotowaniach do bitwy o fort",
         "quest_color": "Zmień kolor zadań które mogę wykonać",
         "inv_size": "Mniejszy ekwipunek",
-        "inv_max_slots": "Maksymalna ilość rzędów w ekwipunku (większa ilość może powodować zacinanie przy przewijaniu)",
-        "smart_speed_set": "Mądrzejsze obliczanie zestawu pod prędkość by nie tracić hp jeśli to możliwe"
+        "inv_max_slots": "Maksymalna ilość rzędów w ekwipunku (większa ilość może powodować zacinanie przy przewijaniu)"
     },
     "events": {
         "xmas": [
