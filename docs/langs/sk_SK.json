@@ -204,8 +204,10 @@
         "ml_sleep": "Pridať tlačítko pre zobrazenie ponuky \"Nájdi posteľ\"",
         "ml_npc": "Pridať tlačítko pre zobrazenie ponuky \"Nájdi zadávateľa\"",
         "prof_craft_points": "Zobraziť počet remeselných bodov v profiloch hráčov",
-        "fb_topic": "Zobraziť topic chatu v okne prípravy boja",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Lepšia kalkulácia speed setu (bez straty HP, ak je to možné)",
         "fb_travel_button": "Pridať tlačítko pre cestovanie k pevnosti v okne bojov",
+        "fb_topic": "Zobraziť topic chatu v okne prípravy boja",
         "fb_online_status": "Zobraziť online status vybraného hráča v priebehu boja",
         "fb_ranks": "Zobraziť hodnosť vybraného hráča v priebehu boja",
         "fb_ali_name": "Zobraziť názov aliancie v náhľadu mesta",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Ikony špecifické pre danú triedu postavy v okne prípravy boja",
         "quest_color": "Zmeniť farbu úloh, ktoré môžem dokončiť",
         "inv_size": "Menší inventár",
-        "inv_max_slots": "Maximálny počet riadkov v inventári %1 poznámka: vyššie čísla spôsobujú sekanie pri scrollovaní",
-        "smart_speed_set": "Lepšia kalkulácia speed setu (bez straty HP, ak je to možné)"
+        "inv_max_slots": "Maximálny počet riadkov v inventári %1 poznámka: vyššie čísla spôsobujú sekanie pri scrollovaní"
     },
     "events": {
         "xmas": [
