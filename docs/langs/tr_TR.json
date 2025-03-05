@@ -204,8 +204,10 @@
         "ml_sleep": "Sol tarafta \"Uyku menüsü\" nü göstermek için yeni bir düğme ekleyin",
         "ml_npc": "Sol tarafta \"Görev verenler\" menüsünü göstermek için yeni bir düğme ekleyin",
         "prof_craft_points": "Oyuncu profilinde ustalık puanını göster",
-        "fb_topic": "Savaş hazırlığı penceresinde sohbet konusunu göster",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Daha akıllı hız seti hesaplaması (mümkünse HP kaybetmeden)",
         "fb_travel_button": "Kale savaşları penceresinde kaleye seyahat etmek için bir düğme ekleyin",
+        "fb_topic": "Savaş hazırlığı penceresinde sohbet konusunu göster",
         "fb_online_status": "Kale savaşı haritasının pop-up'ına çevrimiçi oyuncu durumu ekle",
         "fb_ranks": "Kale savaşı haritasının pop-up'ına oyuncunun rütbesini ekle",
         "fb_ali_name": "Kasabaya genel bakışta İttifak adını göster",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Fortbattle hazırlık penceresinde sınıfa özel simgeler",
         "quest_color": "Tamamlayabileceğim görevlerin rengini değiştir",
         "inv_size": "Küçük Envanter",
-        "inv_max_slots": "Envanterdeki maksimum satır sayısı %1 notu: daha yüksek sayılar kaydırma sırasında gecikmeye neden oluyor",
-        "smart_speed_set": "Daha akıllı hız seti hesaplaması (mümkünse HP kaybetmeden)"
+        "inv_max_slots": "Envanterdeki maksimum satır sayısı %1 notu: daha yüksek sayılar kaydırma sırasında gecikmeye neden oluyor"
     },
     "events": {
         "xmas": [
