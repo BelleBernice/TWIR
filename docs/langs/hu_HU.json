@@ -204,8 +204,10 @@
         "ml_sleep": "Hozzon létre egy gombot az Alvás menühöz",
         "ml_npc": "Hozzon létre egy gombot a Kalandosztókhoz",
         "prof_craft_points": "Mutasd a játékosok szakmapontját a profiljukon",
-        "fb_topic": "Mutasd a cset topicot az erődharc előnézeti ablakban",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)",
         "fb_travel_button": "Utazás gomb hozzáadása az erődharc ablakhoz",
+        "fb_topic": "Mutasd a cset topicot az erődharc előnézeti ablakban",
         "fb_online_status": "Mutasd a játékosok online státuszát az erődharc téképen",
         "fb_ranks": "Mutasd az játékosok rangját az erődharc térképen",
         "fb_ali_name": "Mutasd a szövetség nevét a város profilon",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Kaszt szerinti ikonok az erődharc előnézeti ablakában",
         "quest_color": "Change the color of quests that I can complete",
         "inv_size": "Smaller inventory",
-        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling",
-        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)"
+        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling"
     },
     "events": {
         "xmas": [
