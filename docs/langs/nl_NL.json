@@ -204,8 +204,10 @@
         "ml_sleep": "Voeg een nieuwe knop toe om het \"Slaap menu\" Te laten zien aan de linker kant",
         "ml_npc": "Voeg een nieuwe toe om het  \"Opdrachtgevers\" menu te laten zien aan de linker kant",
         "prof_craft_points": "Laat craftpunten zien op speler profielen",
-        "fb_topic": "Laat het chat topic zien in het fortgevecht venster",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)",
         "fb_travel_button": "Voeg een knop toe om naar het fort te reizen in het fortgevecht venster",
+        "fb_topic": "Laat het chat topic zien in het fortgevecht venster",
         "fb_online_status": "Voeg online status van de speler toe in de fortgevecht popups",
         "fb_ranks": "Voeg de rang van de speler toe aan de fortgevecht pupups",
         "fb_ali_name": "Laat de alliantie naam zien in het stadsoverzicht",
@@ -219,8 +221,7 @@
         "fb_char_icons": "klasse specifieke iconen in het fortgevecht venster",
         "quest_color": "Change the color of quests that I can complete",
         "inv_size": "Smaller inventory",
-        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling",
-        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)"
+        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling"
     },
     "events": {
         "xmas": [
