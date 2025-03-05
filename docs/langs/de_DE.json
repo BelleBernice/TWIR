@@ -205,7 +205,7 @@
         "ml_npc": "NPC locator aktivieren",
         "prof_craft_points": "Zeige Handwerkspunkte im Profil",
         "emp_speed_set": "Geschwindigkeits-Set Option auch bei den Questgebern hinzufügen",
-        "smart_speed_set": "Berechne das Geschwindigkeits-Set, um möglichst wenig LP zu verlieren",
+        "smart_speed_set": "Geschwindigkeits-Set berechnen, mit welchem weniger LP verloren gehen",
         "fb_travel_button": "Sofortreise zum FK-Fenster hinzufügen",
         "fb_topic": "Chat-Topic im FK-Vorbereitungsfenster zeigen",
         "fb_online_status": "Onlinestatus auf der FK-Karte anzeigen",
