@@ -204,8 +204,10 @@
         "ml_sleep": "Adaugă un nou buton pentru a arăta meniul ”Somn” pe partea stângă",
         "ml_npc": "Adaugă un nou buton pentru a arăta meniul ”Împărțitorii de misiuni” pe partea stângă",
         "prof_craft_points": "Arată punctele de craft în profilul jucatorului",
-        "fb_topic": "Arată topicul de chat în fereastra de pregătire pentru bătălie",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)",
         "fb_travel_button": "Adaugă un buton pentru a te deplasa la fort în fereastră de forturi",
+        "fb_topic": "Arată topicul de chat în fereastra de pregătire pentru bătălie",
         "fb_online_status": "Arată statusul online al jucătorului în fereastra de bătălie pentru fort",
         "fb_ranks": "Adaugă rangul jucătorului în fereastra hărții pentru bătălie pentru fort",
         "fb_ali_name": "Afiseaza alianta in prezentarea orasului",
@@ -219,8 +221,7 @@
         "fb_char_icons": "\nClasează pictograme specifice în fereastra de pregătire a fortbattle-ului",
         "quest_color": "Change the color of quests that I can complete",
         "inv_size": "Smaller inventory",
-        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling",
-        "smart_speed_set": "Smarter speed set calculation (without losing HP if possible)"
+        "inv_max_slots": "Maximum number of rows in the inventory %1 note: higher numbers causing lag while scrolling"
     },
     "events": {
         "xmas": [
