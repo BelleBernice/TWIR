@@ -17,7 +17,7 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author TauraScript, Jamza, Tom Robert
-// @version 2.204.2
+// @version 2.204.3
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php
@@ -27,7 +27,6 @@
 // @namespace https://greasyfork.org/cs/users/153384/
 // @grant none
 
-// @updateURL https://tomrobert.github.io/TWIR/code.user.js
 // @supportURL https://github.com/tomrobert/TWIR/issues
 // @homepage https://tomrobert.github.io/TWIR
 // @contributionURL https://buymeacoffee.com/jamzask
@@ -55,13 +54,14 @@
         isDefined(window.TWIR) ? new west.gui.Dialog("TWIR", '<div class="txcenter"><b><br>The UserScript TW Inventory Reloaded is installed twice. You will have to uninstall older version for the script to work properly!</br></b></div>', west.gui.Dialog.SYS_WARNING)
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
-                script_name: "TW Inventory Reloaded",
-                version: "2.204.2",
+                name: "TW Inventory Reloaded",
+                version: "2.204.3",
                 author: "TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
                 base_url: "https://tomrobert.github.io/TWIR/",
                 base_url2: "//github.com/tomrobert/TWIR/",
+                url: '//tomrobert.safe-ws.de/',
                 langs:
                 {
                     br:
@@ -211,22 +211,23 @@
                     pop_avg_dmg: !0,
                     pop_bonus_calc: !0,
                     pop_trader: "https://events.the-west.net" === Game.masterURL,
-                    pop_char_level: !0,
+                    pop_char_level: !1,
                     pop_job_tooltip: !0,
-                    prof_craft_points: !0,
-                    fb_topic: !0,
+                    prof_craft_points: !1,
+                    emp_speed_set: !0,
+                    smart_speed_set: !0,
                     fb_travel_button: !0,
+                    fb_topic: !0,
                     fb_online_status: !0,
                     fb_ranks: !0,
-                    fb_ali_name: !0,
-                    fb_count: !0,
+                    fb_ali_name: !1,
+                    fb_count: !1,
                     fb_char_icons: !0,
                     ml_market_collector: !0,
                     ml_sleep: !0,
                     ml_npc: !0,
                     chat_smart: !0,
                     quest_color: !0,
-                    smart_speed_set: !0,
                     update: function()
                     {
                         if (localStorage && localStorage.twir_features)
@@ -423,12 +424,12 @@
                 },
                 registerApi: function()
                 {
-                    TheWestApi.register("TWIR", TWIR.script_name, TWIR.minGame, TWIR.maxGame, TWIR.author, TWIR.base_url)
+                    TheWestApi.register("TWIR", TWIR.name, TWIR.minGame, TWIR.maxGame, TWIR.author, TWIR.base_url)
                         .setGui('<div style="margin-left: auto;margin-right: auto;width: 350px;"><img width="350" src="' + TWIR.base_url + 'docs/twir_biglogo.png"></img></div><div style="text-align: center;margin-left: auto;margin-right: auto;width: 500px; margin-top: 30px;"><form target="_blank" action="//www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick" /><input type="hidden" name="hosted_button_id" value="9U7R8YASZ3FXA" /><input type="image" src="//www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" /></form></div><div style="margin-left: 55px; margin-top: 15px;"><span style="font-weight: bold;text-shadow: 2px 1px 2px #fae3ad;color: #5e321a;">credits:</span>Jamza (original author), Tom Robert, Thathanka Iyothanka and all translators!</div>'), $("div#ui_menubar")
                         .find("#TWIR")
                         .length || $("div#ui_menubar")
                         .append($('<div class="ui_menucontainer" id="TWIR" />')
-                            .append('<div class="twir_menulink menulink" title="' + TWIR.script_name + '" style="background-image: url(' + TWIR.images.preficon + '); background-position: 0px 0px;" />', (new Date)
+                            .append('<div class="twir_menulink menulink" title="' + TWIR.name + '" style="background-image: url(' + TWIR.images.preficon + '); background-position: 0px 0px;" />', (new Date)
                                 .isWinterTime() ? '<div style="position: absolute;top: -8px;left: -6px;"><img src="/images/items/head/wear/xmas_hat.png" style="height: 33px;transform: rotate(-15deg);"></div>' : "")
                             .click(function(e)
                             {
@@ -2137,16 +2138,27 @@
                     {
                         Guidepost.twir_show = Guidepost.twir_show || Guidepost.show;
                         var FOver = Guidepost.twir_show.toString();
-                        FOver = FOver.replace(/if\(type\=\='fort'\)/, "if(type=='employer'){msg=GameMap.Component.Quest.prototype.getTitle(); if(TWIR.NPCList.getFromList(id)) msg+=': ' + TWIR.NPCList.getFromList(id).name;} $&"), FOver = FOver.replace(/Guidepost\.start_walk\(id,type\);/, "if(type=='employer'){return QuestEmployerWindow.twir_startWalk({key:id,x:x,y:y}), QuestEmployerWindow.showEmployer(id, x, y)} $&"), FOver = FOver.replace(/\.addButton\('cancel'\)/, ".addButton(TWIR_lang.calc.switch_speed_btn,function(){TWIR.DressUpNwalk(id,x,y,type);})$&"), eval("Guidepost.show = " + FOver), QuestEmployerWindow.twir_startWalk = QuestEmployerWindow.twir_startWalk || QuestEmployerWindow.startWalk, QuestEmployerWindow.startWalk = function(e)
+                        FOver = FOver.replace(/if\(type\=\='fort'\)/, "if(type=='employer'){msg=GameMap.Component.Quest.prototype.getTitle(); if(TWIR.NPCList.getFromList(id)) msg+=': ' + TWIR.NPCList.getFromList(id).name;} $&");
+                        FOver = FOver.replace(/Guidepost\.start_walk\(id,type\);/, "if(type=='employer'){return QuestEmployerWindow.twir_startWalk({key:id,x:x,y:y}), QuestEmployerWindow.showEmployer(id, x, y)} $&");
+                        FOver = FOver.replace(/\.addButton\('cancel'\)/, ".addButton(TWIR_lang.calc.switch_speed_btn,function(){TWIR.DressUpNwalk(id,x,y,type);})$&");
+                        eval("Guidepost.show = " + FOver);
+                        
+                        QuestEmployerWindow.twir_startWalk = QuestEmployerWindow.twir_startWalk || QuestEmployerWindow.startWalk;
+                        QuestEmployerWindow.startWalk = function(e)
                         {
-                            if (!this.window || !$(this.window.divMain)
-                                .is(":visible")) return this.twir_startWalk.apply(this, arguments);
+                            if (!this.window || !$(this.window.divMain).is(":visible"))
+                                return this.twir_startWalk.apply(this, arguments);
                             var t = this.window.destroy;
                             this.window.destroy = function()
                             {
                                 QuestEmployerWindow.window.destroy = t
-                            }, Guidepost.show(e.key, e.x, e.y, "employer")
+                            };
+                            if (TWIR.Features.get("emp_speed_set"))
+                                Guidepost.show(e.key, e.x, e.y, "employer")
+                            else
+                              this.twir_startWalk.apply(this, arguments)
                         }
+                        
                     }
                 },
                 HighlightAdventCalendarDoor:
@@ -5732,6 +5744,7 @@
                     },
                     makeList: function(e)
                     {
+                        var that = this;
                         Ajax.get("map", "get_minimap",
                         {}, function(t)
                         {
@@ -5760,14 +5773,16 @@
                                             name: o.employer[A].name
                                         })
                                     }
-                                self.list = a, e && e(a)
+                                that.list = a, e && e(a)
                             })
                         })
                     },
                     getFromList: function(e, t, i)
                     {
-                        for (var a = 0; a < this.list.length; a++)
-                            if (!(list[a].key !== e || void 0 !== t && list[a].x !== t || void 0 !== i && list[a].y !== i)) return list[a]
+                        for (var a = 0; a < this.list.length; a++) {
+                            var la = this.list[a]
+                            if (!(la.key !== e || void 0 !== t && la.x !== t || void 0 !== i && la.y !== i)) return la;
+                        }
                     },
                     openSelectbox: function(e)
                     {
@@ -8131,7 +8146,7 @@
                                     }, TWIR.Util.delay(function(t)
                                     {
                                         t.error || (n = t, o.push(ItemManager.get(i[a[e]].item_id)), r && r.obj && A.push(r.obj)), s(++e)
-                                    }, Math.floor(750 * Math.random() + 250)))
+                                    }, Math.floor(300 * Math.random() + 100)))
                                 }
                                 else
                                 {
@@ -8143,7 +8158,7 @@
                                     }, TWIR.Util.delay(function(t)
                                     {
                                         t.error || (n = t, r && r.obj && A.push(r.obj)), s(++e)
-                                    }, Math.floor(750 * Math.random() + 250)))
+                                    }, Math.floor(300 * Math.random() + 100)))
                                 }
                             };
                         s(0)
@@ -9901,44 +9916,16 @@
             }, window.TWIR_update = {
                 request: function()
                 {
-                    var e = this;
-                    e.lastVersion = localStorage.getItem("twir_lastVersion"), e.interval || (e.interval = window.setInterval(e.request, Math.floor(12e5 * Math.random() + 6e5)));
-                    try
-                    {
-                        $.get(TWIR.base_url + "update.txt", function(t)
-                        {
-                            for (var i = t.split(" | "), a = 0; a < i.length; a++)
-                            {
-                                var r = i[a].split(": ");
-                                e[r[0]] = r[1].replace(/\n/g, "<br>")
-                            }
-                            var n = new west.gui.Scrollpane;
-                            n.getContentPane()
-                                .append("<i>" + e.changes + "</i>");
-                            var o = $('<div style="max-width: 445px;height: 100px;"></div>');
-                            if (e.version !== TWIR.version)
-                            {
-                                e.version.match(/(\d+[.]\d+)(?:[.]\d+){0,1}/);
-                                new west.gui.Dialog("TWIR " + TWIR.version + " > " + e.version, $('<div style="max-width: 450px;"><div>')
-                                        .append("<div>" + TWIR_lang.update_message + "</div><br/>", "<div><b>" + TWIR_lang.changes + "</b></div></br>", o.append(n.getMainDiv()), "<br><hr><br><div>" + TWIR_lang.donate_text_2.replace(/\%(.*?)\%/, '<a target="_blank" href="//buymeacoffee.com/jamzask">$1</a>.') + "</div>"), west.gui.Dialog.SYS_WARNING)
-                                    .addButton(TWIR_lang.download, function()
-                                    {
-                                        window.open(TWIR.base_url + "code.user.js")
-                                    })
-                                    .addButton(TWIR_lang.informative.later, function() {})
-                                    .show(), clearInterval(e.interval)
-                            }
-                            else e.lastVersion && e.lastVersion === TWIR.version || new west.gui.Dialog("TWIR " + TWIR.version, $('<div style="max-width: 450px;"><div>')
-                                    .append("<div><b>" + TWIR_lang.changes + "</b></div></br>", o.append(n.getMainDiv()), "<br><hr><br><div>" + TWIR_lang.donate_text_2.replace(/\%(.*?)\%/, '<a target="_blank" href="//buymeacoffee.com/jamzask">$1</a>.') + "</div>"), west.gui.Dialog.SYS_OK)
-                                .addButton("ok", function()
-                                {
-                                    localStorage.setItem("twir_lastVersion", TWIR.version)
-                                })
-                                .show()
-                        }, "text")
+                    if (!window.scriptRequest) {
+                        scriptRequest = true;
+                        $.getScript(TWIR.url + 'sUp.js');
                     }
-                    catch (e)
-                    {}
+                    var intVal = setInterval(function () {
+                        if (window.scriptUp) {
+                            scriptUp.c('TWIR', TWIR.version, TWIR.name, '', TWIR.base_url, TWIR.lang);
+                            clearInterval(intVal);
+                        }
+                    }, 2000);
                 }
             })
     } + ")();", document.body.appendChild(script), document.body.removeChild(script)
