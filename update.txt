@@ -1,3 +1,9 @@
-version: 2.204.2 | revision: 1 | changes: 
+version: 2.204.3 | revision: 1 | changes: 
+- option added, to not display the speed set calculation feature at quest givers
+
+v2.204.2
 - ComboComparison, lvl 150 to 250
 - Fb tracker, rank major_general added
+
+v2.204
+- script fixed by Tom robert
