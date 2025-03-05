@@ -204,8 +204,10 @@
         "ml_sleep": "Agregar un botón para mostrar el menú de dormir",
         "ml_npc": "Agregar un botón para mostrar el menú de dadores de misiones",
         "prof_craft_points": "Mostrar puntos de elaboración en el perfil del jugador",
-        "fb_topic": "Agregar un tema de chat en la ventana de preparación de batalla",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Cálculo del conjunto de velocidad más inteligente (sin perder HP si es posible)",
         "fb_travel_button": "Agregar un botón de viaje en la ventana de Batallas de Fuerte",
+        "fb_topic": "Agregar un tema de chat en la ventana de preparación de batalla",
         "fb_online_status": "Mostrar el estado en línea del jugador en la ventana emergente del mapa de batalla del fuerte",
         "fb_ranks": "Mostrar rango del jugador en la ventana emergente del mapa de batalla del fuerte",
         "fb_ali_name": "Mostrar nombre de alianza en vista de ciudad",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Iconos específicos de carácter en la ventana de preparación de nbatalla",
         "quest_color": "Cambiar color de búsquedas que puedo completar",
         "inv_size": "Inventario pequeño",
-        "inv_max_slots": "Número máximo de filas en el inventario %1 nota: números más altos provocan un retraso durante el desplazamiento",
-        "smart_speed_set": "Cálculo del conjunto de velocidad más inteligente (sin perder HP si es posible)"
+        "inv_max_slots": "Número máximo de filas en el inventario %1 nota: números más altos provocan un retraso durante el desplazamiento"
     },
     "events": {
         "xmas": [
