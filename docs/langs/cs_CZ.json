@@ -204,8 +204,10 @@
         "ml_sleep": "Přidat tlačítko pro zobrazení nabídky \"Najít postel\"",
         "ml_npc": "Přidat tlačítko pro zobrazení nabídky \"Najít zadavatele\"",
         "prof_craft_points": "Zobrazit počet řemeslných bodů v profilech hráčů",
-        "fb_topic": "Zobrazit topic chatu v okně přípravy bitvy",
+        "emp_speed_set": "Show the speed set option also in the quest giver window",
+        "smart_speed_set": "Lepší kalkulace speed setu (bez straty HP, pokud je to možné)",
         "fb_travel_button": "Přidat tlačítko pro cestování do pevnosti v okně bitev",
+        "fb_topic": "Zobrazit topic chatu v okně přípravy bitvy",
         "fb_online_status": "Zobrazit online status vybraného hráče v průběhu bitvy",
         "fb_ranks": "Zobrazit hodnost vybraného hráče v průběhu bitvy",
         "fb_ali_name": "Zobrazit název aliance v náhledu města",
@@ -219,8 +221,7 @@
         "fb_char_icons": "Ikony specifické pro danou třídu postavy v okně přípravy bitvy",
         "quest_color": "Změnit barvu úkolů, které mohu dokončit",
         "inv_size": "Menší inventář",
-        "inv_max_slots": "Maximální počet řádků v inventáři %1 poznámka: vyšší čísla způsobují sekání při scrollování",
-        "smart_speed_set": "Lepší kalkulace speed setu (bez straty HP, pokud je to možné)"
+        "inv_max_slots": "Maximální počet řádků v inventáři %1 poznámka: vyšší čísla způsobují sekání při scrollování"
     },
     "events": {
         "xmas": [
