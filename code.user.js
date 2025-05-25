@@ -17,10 +17,10 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author TauraScript, Jamza, Tom Robert
-// @version 2.204.3
+// @version 2.204.4
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
-// @include https://*.the-west.*/game.php
+// @include https://*.the-west.*/game.php*
 // @exclude https://classic.the-west.net*
 
 // @icon https://tomrobert.github.io/TWIR/docs/icons/image18.png
@@ -55,7 +55,7 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 name: "TW Inventory Reloaded",
-                version: "2.204.3",
+                version: "2.204.4",
                 author: "TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
@@ -4274,7 +4274,7 @@
                                 }
                                 catch (e)
                                 {}
-                                if (TWIR.Features.get("pop_trader") && null !== this.item_obj.traderlevel && this.item_obj.traderlevel <= 20) switch (this.item_obj.type)
+                                if (TWIR.Features.get("pop_trader") && null !== this.item_obj.traderlevel && this.item_obj.traderlevel <= 30) switch (this.item_obj.type)
                                 {
                                     case "belt":
                                     case "body":
@@ -8002,7 +8002,7 @@
                                     break;
                                 case "trader":
                                 case "tradeable":
-                                    if (1 == e.obj.tradeable && e.obj.traderlevel <= 20 && !a || (0 == e.obj.tradeable || e.obj.traderlevel > 20) && a) return !0;
+                                    if (1 == e.obj.tradeable && e.obj.traderlevel <= 30 && !a || (0 == e.obj.tradeable || e.obj.traderlevel > 30) && a) return !0;
                                     break;
                                 case "dropped":
                                 case "dropable":
