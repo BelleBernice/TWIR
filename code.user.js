@@ -236,9 +236,9 @@
                             for (var t in this) void 0 !== e[t] && (this[t] = e[t])
                         }
                     },
-                    get: function(e)
+                    get: function(ea)
                     {
-                        return void 0 !== this[e] && this[e]
+                        return void 0 !== this[ea] && this[ea]
                     }
                 },
                 setsCache:
@@ -3133,9 +3133,9 @@
                             g = '<td><div style="vertical-align: middle;"><img src="%1" style="max-height: 16px; margin-bottom: 2px;" />&nbsp;%2&nbsp;</div></td>';
                         return i += l ? s(g, "/images/fort/battle/attacker_secondary.png", o.offense || 0) + s(g, "/images/fort/battle/defender_secondary.png", o.defense || 0) + s(g, "/images/fort/battle/attacker_freelancer.png", (o.damagebonus || 0) + "&times;") + s(g, "/images/fort/battle/resistance.png", o.resistance || 0) + (0 !== o.leadbonus ? s(g, "/images/fort/battle/leadsupport.png", o.leadbonus || 0) : "") : s(g, "/images/fort/battle/attacker_primary.png", a.format((A.attackbonus > -1 && A.attackbonus || 0) + (A.classbonus > -1 && n.characterclass === A.classbonus && A.attributebonus || 0))) + s(g, "/images/fort/battle/defender_primary.png", a.format((A.defendbonus > -1 && A.defendbonus || 0) + (A.classbonus > -1 && n.characterclass === A.classbonus && A.attributebonus || 0))) + (A.classbonus > -1 && n.characterclass === A.classbonus ? s('<td><div style="vertical-align: middle;">(<img src="%1" height="15" />%2)&nbsp;</div></td>', this.formatClass(A.classbonus, !0), a.format(A.attributebonus || 0)) : "")
                     },
-                    getLastRound: function(e)
+                    getLastRound: function(eb)
                     {
-                        var t = this[e].round_data;
+                        var t = this[eb].round_data;
                         if (t)
                         {
                             var i = Object.keys(t)[Object.keys(t)
@@ -3226,7 +3226,7 @@
                             TWIR.error(e, "FortbattleTracker.handleRoundData")
                         }
                     },
-                    evaluateRound: function(e, t)
+                    evaluateRound: function(ec, t)
                     {
                         var i, a = {
                             0:
@@ -3242,8 +3242,8 @@
                         };
                         try
                         {
-                            i = t ? this[e].round_data[t] ||
-                            {} : this.getLastRound(e);
+                            i = t ? this[ec].round_data[t] ||
+                            {} : this.getLastRound(ec);
                             for (var r = 0; r < i.length; r++)
                                 if (!i[r].dead)
                                 {
@@ -3396,12 +3396,12 @@
                         }
                         return a
                     },
-                    highlightTrackedPlayers: function(e)
+                    highlightTrackedPlayers: function(ed)
                     {
-                        for (var t = this.getLastRound(e) || [], i = 0; i < t.length; i++)
+                        for (var t = this.getLastRound(ed) || [], i = 0; i < t.length; i++)
                         {
                             var a = t[i];
-                            !a.dead && this.isTracked(a.characterid, e) && this.highlightPlayer(a.characterid, this[e].tracked_players[a.characterid], e)
+                            !a.dead && this.isTracked(a.characterid, ed) && this.highlightPlayer(a.characterid, this[ed].tracked_players[a.characterid], ed)
                         }
                     },
                     isTracked: function(e, t)
@@ -3454,9 +3454,9 @@
                             for (var t in n) parseInt(t) === e && n[t].attr("style", n[t].attr("style") + "; " + a)
                         }
                     },
-                    unhighlightPlayers: function(e)
+                    unhighlightPlayers: function(ef)
                     {
-                        var t = this[e].ctx;
+                        var t = this[ef].ctx;
                         if (t)
                         {
                             var i = t.charIcons;
@@ -3480,17 +3480,17 @@
                         $(".twir_tracker_marker", t)
                             .remove()
                     },
-                    setRoundTime: function(e, t)
+                    setRoundTime: function(eg, t)
                     {
                         var i = this,
                             a = (new Date)
                             .getTime() + t;
-                        if (!this[e]) return TWIR.Util.waitFor(function()
+                        if (!this[eg]) return TWIR.Util.waitFor(function()
                         {
-                            return void 0 !== i[e]
+                            return void 0 !== i[eg]
                         }, function()
                         {
-                            r(e, a)
+                            r(eg, a)
                         });
 
                         function r(e, t)
@@ -3655,16 +3655,16 @@
                             TWIR.error(e, "FortbattleTracker.updateOverviewTable")
                         }
                     },
-                    handleLastScrollPos: function(e, t)
+                    handleLastScrollPos: function(eh, t)
                     {
-                        if (this.isOpened(e))
+                        if (this.isOpened(eh))
                         {
-                            var i = this[e].GuiTable;
-                            i.divMain.is(":visible") || (i = this[e].GuiGroupframe);
+                            var i = this[eh].GuiTable;
+                            i.divMain.is(":visible") || (i = this[eh].GuiGroupframe);
                             var a = i.bodyscroll.verticalBar,
                                 r = $("div.tw2gui_scrollbar_pulley", a.divMain);
-                            if (t) return this[e].pulleyPos = r.position();
-                            this[e].pulleyPos && a.move(this[e].pulleyPos.top, !1, !0), delete this[e].pulleyPos
+                            if (t) return this[eh].pulleyPos = r.position();
+                            this[eh].pulleyPos && a.move(this[eh].pulleyPos.top, !1, !0), delete this[eh].pulleyPos
                         }
                     },
                     handleEventAction: function(e, t)
@@ -3734,29 +3734,29 @@
                             .find("div.fort_battle_buttons")
                             .append(r)
                     },
-                    openWindow: function(e)
+                    openWindow: function(ei)
                     {
-                        if (this[e] && this[e].ctx)
+                        if (this[ei] && this[ei].ctx)
                         {
-                            var t = this[e].window = wman.open("TWIR_tracker_" + e, null, "escape nominimize nocloseall noreload")
+                            var t = this[ei].window = wman.open("TWIR_tracker_" + ei, null, "escape nominimize nocloseall noreload")
                                 .setMiniTitle(TWIR_lang.fortbattle.add_name)
                                 .setSize(700, 415);
                             t.twir_addDonateButton();
-                            var i = this[e].Div_Topboard = $('<div style="width: 650px; height: 55px; position: absolute; top: -3px; left: 0px; text-align: center;"></div>'),
-                                a = this[e].Div_OverviewTable = $('<div style="width: 650px; height: 275px; position: absolute; bottom: 0px; left: -2px;"></div>'),
-                                r = this[e].Div_SwitchButton = $('<div style="position: absolute;top: -40px;left: 0px;"></div>');
+                            var i = this[ei].Div_Topboard = $('<div style="width: 650px; height: 55px; position: absolute; top: -3px; left: 0px; text-align: center;"></div>'),
+                                a = this[ei].Div_OverviewTable = $('<div style="width: 650px; height: 275px; position: absolute; bottom: 0px; left: -2px;"></div>'),
+                                r = this[ei].Div_SwitchButton = $('<div style="position: absolute;top: -40px;left: 0px;"></div>');
                             $(t.getContentPane())
                                 .append(r, i, a), $(t.getContentPane())
                                 .hide()
-                                .fadeIn(), this.updateOverviewTable(e), EventHandler.listen(["window_closed_fortbattle-" + e, "window_closed_fortbattle-m" + e], function()
+                                .fadeIn(), this.updateOverviewTable(ei), EventHandler.listen(["window_closed_fortbattle-" + ei, "window_closed_fortbattle-m" + ei], function()
                                 {
-                                    return wman.close("TWIR_tracker_" + e), EventHandler.ONE_TIME_EVENT
+                                    return wman.close("TWIR_tracker_" + ei), EventHandler.ONE_TIME_EVENT
                                 })
                         }
                     },
-                    isOpened: function(e)
+                    isOpened: function(ej)
                     {
-                        return !(!this[e].window || !$(this[e].window.divMain)
+                        return !(!this[ej].window || !$(this[ej].window.divMain)
                             .is(":visible"))
                     }
                 },
@@ -8175,11 +8175,11 @@
                         };
                         this.options = e, this.initEntries()
                     },
-                    reset: function(e)
+                    reset: function(ek)
                     {
-                        for (var t = this[e] || [], i = 0; i < t.length; i++) $(t[i][1], this["Div_" + e + "_slots"].children())
+                        for (var t = this[ek] || [], i = 0; i < t.length; i++) $(t[i][1], this["Div_" + ek + "_slots"].children())
                             .remove();
-                        this[e] = [], this["Div_" + e + "_bucket"] && this["Div_" + e + "_bucket"].remove()
+                        this[ek] = [], this["Div_" + ek + "_bucket"] && this["Div_" + ek + "_bucket"].remove()
                     },
                     initEntries: function()
                     {
@@ -8214,12 +8214,12 @@
                             return e.type == t.type ? e.name.localeCompare(t.name) : o.indexOf(e.type) - o.indexOf(t.type)
                         }), this.list
                     },
-                    handleLevel: function(e)
+                    handleLevel: function(el)
                     {
-                        for (var t = this.options[e + "_level"], i = 0; i < this[e].length; i++)
+                        for (var t = this.options[el + "_level"], i = 0; i < this[el].length; i++)
                         {
-                            var a = this[e][i][1],
-                                r = ItemManager.get(this[e][i][0]);
+                            var a = this[el][i][1],
+                                r = ItemManager.get(this[el][i][0]);
                             a.addMousePopup(new ItemPopup(r,
                                 {
                                     character:
@@ -8232,24 +8232,24 @@
                                 .popup)
                         }
                     },
-                    handleItemLevel: function(e, t, i)
+                    handleItemLevel: function(em, t, i)
                     {
-                        for (var a = 0; a < this[e].length; a++)
-                            if (ItemManager.get(this[e][a][0])
+                        for (var a = 0; a < this[em].length; a++)
+                            if (ItemManager.get(this[em][a][0])
                                 .item_base_id === t)
                             {
-                                var r = this[e][a][1],
+                                var r = this[em][a][1],
                                     n = ItemManager.getByBaseId(t, i);
                                 if (r.find(".item_level")
                                     .remove(), r.find(".tw_item")
-                                    .data("itemId", n.getId()), this[e][a][0] = n.getId(), 0 === i) continue;
+                                    .data("itemId", n.getId()), this[em][a][0] = n.getId(), 0 === i) continue;
                                 var o = $('<span class="item_level' + (n.isUpgradeable() ? "" : " fake") + '">' + i + "</span>");
                                 $("#twir_widgetLevel_" + n.short)
                                     .is(":visible") && o.css(
                                     {
                                         left: "10px"
                                     }), r.append(o)
-                            } return this.handleLevel(e), this[e]
+                            } return this.handleLevel(em), this[em]
                     },
                     createItem: function(e, t)
                     {
@@ -8473,24 +8473,24 @@
                         for (var i = [], a = 0; a < e.length; a++) i.push([e[a], ""]);
                         return this[t] = i, this.sortItems(t), this.refreshHtml(t), this[t]
                     },
-                    sortItems: function(e)
+                    sortItems: function(en)
                     {
                         var t = [...Inventory.availableCategories, "yield"];
-                        this[e].sort(function(e, i)
+                        this[en].sort(function(en, i)
                         {
-                            return e = ItemManager.get(e[0]), i = ItemManager.get(i[0]), t.indexOf(e.type) - t.indexOf(i.type)
+                            return en = ItemManager.get(en[0]), i = ItemManager.get(i[0]), t.indexOf(en.type) - t.indexOf(i.type)
                         })
                     },
-                    calcBonus: function(e)
+                    calcBonus: function(eo)
                     {
-                        var t = this[e].map(function(e)
+                        var t = this[eo].map(function(eo)
                             {
-                                return e[0]
+                                return eo[0]
                             }),
                             i = {},
                             a = {};
-                        if (1 === this.options.calc_bonus) return new TWIR_Calc("bonus4Items", null, t, this.options[e + "_level"]);
-                        if (2 === this.options.calc_bonus) return new TWIR_Calc("bonusFromItems", null, t, this.options[e + "_level"]);
+                        if (1 === this.options.calc_bonus) return new TWIR_Calc("bonus4Items", null, t, this.options[eo + "_level"]);
+                        if (2 === this.options.calc_bonus) return new TWIR_Calc("bonusFromItems", null, t, this.options[eo + "_level"]);
                         for (var r = 0; r < t.length; r++)
                         {
                             var n = ItemManager.get(t[r]);
@@ -8502,7 +8502,7 @@
                             {
                                 key: o,
                                 items: a[o]
-                            }, this.options[e + "_level"]);
+                            }, this.options[eo + "_level"]);
                             for (var s in A) i[s] || (i[s] = 0), i[s] += A[s]
                         }
                         return i
