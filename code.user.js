@@ -17,7 +17,7 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author TauraScript, Jamza, Tom Robert
-// @version 2.204.4
+// @version 2.204.5
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php*
@@ -55,8 +55,8 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 name: "TW Inventory Reloaded",
-                version: "2.204.4",
-                author: "TauraScript, Jamza",
+                version: "2.204.5",
+                author: "TauraScript, Jamza, Tom Robert",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
                 base_url: "https://tomrobert.github.io/TWIR/",
@@ -1118,7 +1118,7 @@
                                     if (void 0 !== localStorage)
                                     {
                                         for (var t in e.checkboxes) TWIR.Features[t] = e.checkboxes[t].isSelected();
-                                        if (localStorage.setItem("scriptsLang", a.getValue()), TWIR.Features.inv_menu_size = parseInt(u.getValue()), TWIR.Features.inv_max_slots = parseInt(h.getValue()), Inventory.size = h.getValue() * Inventory.slot_coef, Inventory.sizeSearch = h.getValue() * Inventory.slot_coef, localStorage.setItem("twir_features", JSON.stringify(TWIR.Features)), TWIR.Inventory.sort_options = $.extend(
+                                        if (localStorage.setItem("scriptsLang", a.getValue()), TWIR.Features.inv_menu_size = parseInt(u.getValue()), TWIR.Features.inv_max_slots = parseInt(h.getValue()), localStorage.setItem("twir_features", JSON.stringify(TWIR.Features)), TWIR.Inventory.sort_options = $.extend(
                                             {}, e.sort_options_temp), TWIR.Data.add("twir_sort_options", e.sort_options_temp), TWIR.Inventory.search_keybinds = $.extend(
                                             {}, e.search_keybinds_temp), TWIR.Data.add("twir_search_keybinds", e.search_keybinds_temp), B > 0)
                                         {
@@ -6764,13 +6764,33 @@
                     init: function()
                     {
                         var self = this,
-                            small_inv = TWIR.Features.get("inv_size"),
-                            n_slots = TWIR.Features.get("inv_max_slots");
-                        Inventory.uid = "inventory", Inventory.slot_coef = small_inv ? 8 : 11, Inventory.size = n_slots * Inventory.slot_coef, Inventory.sizeSearch = n_slots * Inventory.slot_coef, Inventory.sizeCustom = small_inv ? 48 : 66, Inventory.width = small_inv ? 555 : 740, Inventory.availableCategories = ["new", "head", "neck", "body", "pants", "belt", "foot", "right_arm", "left_arm", "animal"], Inventory.twirCategories = ["bonus", "work", "quest", "useable", "buffs", "crafting"], Inventory.defaultCategory = "new", Inventory.latestSize = small_inv ? 48 : 66, Inventory.context = null;
+                        small_inv = TWIR.Features.get("inv_size");
+                        Inventory.uid = "inventory", Inventory.slot_coef = small_inv ? 8 : 11, Inventory.availableCategories = ["new", "head", "neck", "body", "pants", "belt", "foot", "right_arm", "left_arm", "animal"], Inventory.twirCategories = ["bonus", "work", "quest", "useable", "buffs", "crafting"], Inventory.defaultCategory = "new", Inventory.context = null;
                         var dupled = [...Inventory.availableCategories, ...Inventory.twirCategories];
-                        small_inv && (dupled.push("custom_yield"), TWIR_lang.inventory.custom_yield_items = Inventory.categoryDesc.yield)
+                        small_inv && (dupled.push("custom_yield"), TWIR_lang.inventory.custom_yield_items = Inventory.categoryDesc.yield);
+                        Object.defineProperties(Inventory, {
+                          size:  {
+                            get() {
+                              return TWIR.Features.inv_max_slots * Inventory.slot_coef;
+                            }
+                          },
+                          sizeSearch:  {
+                            get() {
+                              return TWIR.Features.inv_max_slots * Inventory.slot_coef;
+                            }
+                          },
+                          sizeCustom:  {
+                            get() {
+                              return small_inv ? 48 : 66;
+                            }
+                          },
+                          latestSize:  {
+                            get() {
+                              return small_inv ? 48 : 66;
+                            }
+                          },
+                        });
                         /*! Custom Sorting */
-                        ;
                         var sort = TWIR.Data.get("twir_sort_options");
                         sort && Object.keys(sort)
                             .includes("0") ? self.sort_options = sort : self.sort_options = {
@@ -7160,7 +7180,7 @@
                                         else
                                         {
                                             Inventory.window.hideLoader(), 0 == o && $('<div style="margin:auto;"><span style="margin:auto; font-weight:bold;text-align: center!important;color: #4d392c!important;">' + TWIR_lang.informative.error404 + "</span></div>")
-                                                .appendTo($("#bag", Inventory.DOM)), 0 != a && a > 0 && e >= a && (e = a - 1), Inventory.setNavigation("set", e + 1, a);
+                                                .appendTo($("#bag", Inventory.DOM)), 0 != a && a > 0 && e >= a && (e = a - 1), Inventory.setNavigation("search", e + 1, a);
                                             var t = TWIR.InventoryStats.calcValues(i),
                                                 s = Inventory.guiElements.twir_searchStatsIcon;
                                             $.isEmptyObject(t) ? s.addClass("twir_hidden") : s.removeClass("twir_hidden"), s.setTitle(TWIR.InventoryStats.getXHTML(t))
@@ -7220,7 +7240,7 @@
                                         e = [TWIR_lang.inventory[i ? "custom_yield" !== t ? i : i + "_items" : t + "_items"], TWIR_lang.inventory[t + "_items"]];
                                         break;
                                     default:
-                                        e = t && t in Inventory.categoryDesc && "new" !== t && "set" !== t ? [Inventory.categoryDesc[t], Inventory.categoryDesc[t]] : ["TWIR - " + TWIR_lang.invent, "TWIR"]
+                                        e = t && t in Inventory.categoryDesc && "new" !== t && "search" !== t ? [Inventory.categoryDesc[t], Inventory.categoryDesc[t]] : ["TWIR - " + TWIR_lang.invent, "TWIR"]
                                 }
                                 Inventory.window.setMiniTitle(e[1].cutIt(50)), Inventory.window.setTitle('<span style="margin-top: 4px; font-size: 15pt;">' + e[0].replace("*", "")
                                     .replace("#", "")
@@ -7231,7 +7251,7 @@
                             {
                                 switch ($("#bag", Inventory.DOM)
                                     .empty(), t = null == t ? 0 : t - 1, e = e || Inventory.defaultCategory, i = i || Inventory.sub_category, $(Inventory.DOM)
-                                    .removeClass("instant_wear_enabled"), Inventory.guiElements.twir_searchStatsIcon.addClass("twir_hidden"), "set" !== e && ($(".bag_navigation", Inventory.DOM)
+                                    .removeClass("instant_wear_enabled"), Inventory.guiElements.twir_searchStatsIcon.addClass("twir_hidden"), "search" !== e && ($(".bag_navigation", Inventory.DOM)
                                         .addClass("twir_hidden"), Inventory.searchResult = []), "custom" !== e && "sets" !== e && ($(".bag_navigation", Inventory.DOM)
                                         .addClass("twir_hidden"), Inventory.customResult = []), $("#bag", Inventory.DOM)
                                     .empty(), e)
@@ -7252,7 +7272,7 @@
                                     case "sets":
                                         Inventory.showCustom(t);
                                         break;
-                                    case "set":
+                                    case "search":
                                         Inventory.showSearch(t);
                                         break;
                                     case "upgradeable":
