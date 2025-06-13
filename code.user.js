@@ -17,7 +17,7 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author TauraScript, Jamza, Tom Robert
-// @version 2.204.5
+// @version 2.204.6
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php*
@@ -55,7 +55,7 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 name: "TW Inventory Reloaded",
-                version: "2.204.5",
+                version: "2.204.6",
                 author: "TauraScript, Jamza, Tom Robert",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
@@ -441,14 +441,6 @@
                 {
                     try
                     {
-                        /*! TWS */
-                        var e = localStorage.tws_settings ? JSON.parse(localStorage.tws_settings) :
-                        {};
-                        e = $.extend(e,
-                            {
-                                enableWir: !1,
-                                enableWirExt: !1
-                            }), localStorage.setItem("tws_settings", JSON.stringify(e)),
                             /*! TWX.ShortPopups */
                             window.TWX && window.TWX.Features && (window.TWX.Features.ShortPopups = !1);
                         var t = localStorage.TWLT ? JSON.parse(localStorage.TWLT) :
@@ -6787,6 +6779,11 @@
                           latestSize:  {
                             get() {
                               return small_inv ? 48 : 66;
+                            }
+                          },
+                          width:  {
+                            get() {
+                              return small_inv ? 304 : 782;
                             }
                           },
                         });
