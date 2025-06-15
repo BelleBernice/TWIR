@@ -17,7 +17,7 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author Tom Robert, TauraScript, Jamza
-// @version 2.204.7
+// @version 2.204.8
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php*
@@ -55,7 +55,7 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 name: "TW Inventory Reloaded",
-                version: "2.204.7",
+                version: "2.204.8",
                 author: "Tom Robert, TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
@@ -8931,9 +8931,9 @@
                             {
                                 e.options.weapon = e.options.weapon ? "shot" == e.options.weapon ? "hand" : null : "shot", $(this)
                                     .siblings("img")
-                                    .attr("src", "none" == e.options.weapon ? "/images/tw2gui/pixel-vfl3z5WfW.gif" : "shot" == e.options.weapon ? "images/items/right_arm/golden_gun.png" : "images/items/right_arm/goldensable.png"), $(this)
+                                    .attr("src", "hand" == e.options.weapon ? "images/items/right_arm/goldensable.png" : "shot" == e.options.weapon ? "images/items/right_arm/golden_gun.png" : "/images/tw2gui/pixel-vfl3z5WfW.gif"), $(this)
                                     .siblings("img")
-                                    .addMousePopup("none" == e.options.weapon ? "" : "shot" == e.options.weapon ? TWIR_lang.stats.shot : TWIR_lang.stats.hand)
+                                    .addMousePopup("hand" == e.options.weapon ? TWIR_lang.stats.hand : "shot" == e.options.weapon ? TWIR_lang.stats.shot : " ")
                             }), e.Div_Options.append('<span style="display: inline-block; font-weight: bold; width: 100px;">' + TWIR_lang.calc.level + ":</span>", t.lvl.getMainDiv(), i)
                     },
                     getBonImg: function(e, t, i, a)
@@ -9765,15 +9765,12 @@
                         l = "worker" == Character.charClass ? o ? 10 : 5 : 0,
                         g = (e.fort_damage || 0) + (e.fort_damage_sector || 0),
                         p = ((e.health || 0) + r("health")) * ("soldier" == Character.charClass ? o ? 20 : 15 : 10) + 10 * i.options.level + 90,
-                        c = function(e)
-                        {
-                            for (var t = 0, i = 0, a = arguments.length; i < a; i++) t += arguments[i];
-                            return t / arguments.length
-                        }(e.left_arm_damage_min || 0, e.left_arm_damage_max || 0) + g,
+                        c = ((e.left_arm_damage_min || 0) + (e.left_arm_damage_max || 0)) / 2 + g,
                         d = "attack" == i.options.side ? (e.hide || 0) + r("hide") : (e.pitfall || 0) + r("pitfall"),
                         C = (e.leadership || 0) + r("leadership"),
                         u = (e.aim || 0) + r("aim"),
-                        m = (e.dodge || 0) + r("dodge");
+                        m = (e.dodge || 0) + r("dodge"),
+                        beginnerBonus = 15 * (1 - Character.level / 250) + 10;
                     switch (t || ("string" == typeof i.options.skills ? i.options.skills : void 0))
                     {
                         case "ms":
@@ -9783,10 +9780,10 @@
                             a += n(300 * d / p + (e.fort_resistance || 0), 0);
                             break;
                         case "fort_offense":
-                            a += n((25 + A + Math.pow(u, .5) + Math.pow(d, .6) + (e.fort_offense || 0) + (e.fort_offense_sector || 0)) * s, 2);
+                            a += n((A + Math.pow(u, .5) + Math.pow(d, .6) + (e.fort_offense || 0) + (e.fort_offense_sector || 0) + beginnerBonus) * 1.15 * s, 2);
                             break;
                         case "fort_defense":
-                            a += n((10 + A + Math.pow(m, .5) + Math.pow(d, .6) + (e.fort_defense || 0) + (e.fort_defense_sector || 0)) * s, 2);
+                            a += n((A + Math.pow(m, .5) + Math.pow(d, .6) + (e.fort_defense || 0) + (e.fort_defense_sector || 0) + beginnerBonus) * s, 2);
                             break;
                         case "fort_damage":
                             a += Math.round(c + c * C / p);
