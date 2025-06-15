@@ -16,8 +16,8 @@
 // @description:sk Lepší Inventár a nástroje pre The West!
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
-// @author TauraScript, Jamza, Tom Robert
-// @version 2.204.6
+// @author Tom Robert, TauraScript, Jamza
+// @version 2.204.7
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php*
@@ -55,8 +55,8 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 name: "TW Inventory Reloaded",
-                version: "2.204.6",
-                author: "TauraScript, Jamza, Tom Robert",
+                version: "2.204.7",
+                author: "Tom Robert, TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
                 base_url: "https://tomrobert.github.io/TWIR/",
@@ -2062,8 +2062,7 @@
                                     "margin-left": ""
                                 }), this
                         };
-                        var scrollpane_onResized = west.gui.Scrollpane.prototype.onResized.toString();
-                        scrollpane_onResized = scrollpane_onResized.replace(/"margin-right"/g, '($(this.divMain).hasClass("twir_leftBar") ? "margin-left" : "margin-right")'), eval("west.gui.Scrollpane.prototype.onResized = " + scrollpane_onResized), west.gui.Scrollpane.prototype.twir_isScrolledToBottom = function()
+                        west.gui.Scrollpane.prototype.twir_isScrolledToBottom = function()
                         {
                             var e = this.contentPane.position();
                             return Math.abs(e.top) == this.contentPane.height() - this.clipPane.height()
@@ -6118,9 +6117,9 @@
                                 var t = $(Wear.window.divMain);
                                 return {
                                     x: t.position()
-                                        .left + t.width() - 13,
+                                        .left + 150,
                                     y: t.position()
-                                        .top
+                                        .top - 50
                                 } [e]
                             };
                             $(".tw2gui_window.tw2gui_win2.tw2gui_window_notabs.wear")
@@ -6203,7 +6202,7 @@
                             var o = e.GuiScrollpane = (new west.gui.Scrollpane)
                                 .appendContent("<div/>");
                             $(t.getContentPane())
-                                .append($('<div style="position: absolute; top: 38px; width: 545px;"></div>')
+                                .append($('<div style="position: absolute; top: 36px; width: 545px;"></div>')
                                     .append((new west.gui.Groupframe)
                                         .appendToContentPane($('<div style="height: 325px;"/>')
                                             .append(o.getMainDiv()))
@@ -6450,7 +6449,7 @@
                                 var I = new west.gui.Iconbutton(new west.gui.Icon("search"), function()
                                 {
                                     Inventory.showCustomItems(s), t.GuiWindow.bringToTop()
-                                }), c = $('<table style="background-color: #a6805a;width: 470px;border-collapse: separate !important;border-spacing: 1px !important;border: 1px solid #996b39;border-color: rgba(110,57,0,0.5);margin-left: auto;margin-right: auto; margin-top: 5px;" />'), d = 0
+                                }), c = $('<table style="background-color: #a6805a;min-width: 470px;border-collapse: separate !important;border-spacing: 1px !important;border: 1px solid #996b39;border-color: rgba(110,57,0,0.5);margin-left: auto;margin-right: auto; margin-top: 5px;" />'), d = 0
                                 /*! Bonuses */
                                 ; d < i.length; d++)
                                 if (!(i[d].best_items.length < parseInt(Object.keys(i[d].bonus_obj)[0])))
@@ -6468,11 +6467,11 @@
                                             .append(t.makeBonusSelection(i[d])), $('<td style="border: 1px solid #996b39;border-color: rgba(110,57,0,0.5);background-color: #d4ba91 !important;" />')
                                             .append(C)))
                                 } a.getContentPane()
-                                .append($('<div style="height: 153px; text-align: center; margin-top: 15px; padding: 2px;border-spacing: 1px !important;background: rgba(220, 165, 118, 0.4);border-radius: 3px;box-shadow: 0 0 1px inset;"></div>')
+                                .append($('<div style="height: 153px; text-align: center; margin-top: 2px; padding: 2px;background: rgba(220, 165, 118, 0.4);border-radius: 3px;box-shadow: 0 0 1px inset;"></div>')
                                     .append(n.getMainDiv())), s.length && a.getContentPane()
-                                .append($('<div style="margin-left: 335px;"></div>')
+                                .append($('<div style="margin-left: 300px;"></div>')
                                     .append(p.getMainDiv(), I.getMainDiv())), a.getContentPane()
-                                .append('<div style="width: 100%; height: 10px; background: url(/images/window/market/wood_devider.png) center top no-repeat;"/>', c, "<br><br>")
+                                .append(c, "<br><br>")
                         }
                         catch (e)
                         {
@@ -6941,7 +6940,7 @@
                                         TWIR.Inventory.showSearch()
                                     })
                                     .addClass("twir_open_search"), Inventory.guiElements.twir_searchStatsIcon = new west.gui.Icon("question-priority-4", TWIR_lang.stats.stats);
-                                var l = Inventory.guiElements.ScrollPane = new west.gui.Scrollpane("twir_leftBar")
+                                var l = Inventory.guiElements.ScrollPane = new west.gui.Scrollpane("twir_scrollBar")
                                     .appendContent($("<div id='bag'></div>"));
                                 Inventory.window.appendToContentPane($('<div class="actions"></div>')
                                         .append(Inventory.guiElements.upgradeButton.getMainDiv(), Inventory.guiElements.searchShowButton.getMainDiv(), self.GuiSetCollectorButton.getMainDiv()), t, n, o, $('<div class="twir_bookmarks" style="width: 25px; max-height: 360px; position: absolute;right: -12px;top: 90px; background: url(' + TWIR.images.menubg + '); box-shadow: inset 0 0 5px 0 #000010;border: 2px solid transparent;z-index: 5; visibility: hidden;"></div>'), $("<div id='twir_inventory_content' style='height: 354px!important;overflow: hidden; position: absolute;top: 100px; left: -5px;'></div>")
@@ -7499,7 +7498,7 @@
                         };
                         injectTrader(),
                             /*! Css */
-                            TWIR.Util.addCss(".instant_wear_container { z-index: 9999;bottom: 0px!important; text-align: right!important; }.search_container { z-index: 5!important;position: absolute!important;width: 100%;height: auto!important;left: 0px!important;right: unset!important; bottom: -11px!important; text-align: center; }.upgrade_items .textart_title { color: #ffe7b100!important;margin-left: 0px!important;margin-right: 0px!important; } .inventory .actions .upgrade_items { float: left!important;min-width: 16px!important;width: 16px!important;z-index: 999!important;position: relative!important;display: inline-block!important; } #bag .item.item_inventory { margin-bottom: 0px!important;width: 60px!important;height: 58px!important; }#windows .inventory .filters { height: 40px!important;position: absolute!important;top: 54px!important;margin: unset!important;box-shadow: 0 0 20px inset;background: url(" + TWIR.images.menubg + "); border: 3px solid transparent; }#bag { height: 100%!important;text-align: center!important;color: #4d392c!important;overflow: hidden!important;padding-left: 3px;border-radius: 3px;padding-top: 3px;padding-bottom: 3px; box-shadow: 0 0 20px inset;background: url(" + TWIR.images.bagbg + ");background-size: 100% auto; }#CC_pin_items { float:left!important;position:relative!important;display:inline-block!important; }@keyframes fadeIn   { 0%{opacity:0}100%{opacity:1}}#twir_donate_button:hover { background: url(" + TWIR.images.menuiconhover + ")!important; }.tw2gui_window_buttons { width: auto!important; }div.tw2gui_window.inventory div.tw2gui_inner_window_bg { background:url(/images/window/premium/premium_buy_bg_large.jpg)!important;background-position:center!important;background-repeat:no-repeat!important;background-size:100% 100%!important; }div.tw2gui_selectbox ul.tw2gui_selectbox_content { min-width: 100px!important; }.inventory .filters .filter_inventory, .filter_inventory { display:inline-block;height:35px!important;width:35px!important;margin-top:1px;background:none;vertical-align:middle;cursor:pointer;border-radius:25%; box-shadow:inset 0 0 5px 2px #4d392c,inset 0 0 2px 1px #222; opacity: 0.75; }.filter_inventory:hover { opacity: 1!important; }.inventory .filters .filter_yield { display: none!important; }.inventory .filters .filter_yield:active { display: none!important; }.inventory .filters .filter_upgradeable { display: none!important; }.inventory .filters .filter_upgradeable:active { display: none!important; }.inventory .actions { text-align:center;position:absolute!important;top:14px!important; }.inventory .actions .TWX_sellable_button { position:relative!important;float:left;display:inline-block!important;} .inventory .no-items { filter:opacity(30%) grayscale(50)!important;cursor:default!important; pointer-events: none!important; }.twir_open_search {position: absolute !important;right: 41px; display: inline-block; }.twir_open_set_collector { position: absolute !important; right: 5px; display: inline-block; }.twir_leftBar div.tw2gui_scrollbar.vertical { left: 0px!important; right: unset!important;}.inventory .bag_navigation { position: absolute!important; bottom: -8px!important; right: 0px!important; background: url(" + TWIR.images.menubg + "); box-shadow: inset 0 0 5px 0 #000010;border: 2px solid transparent; z-index: 5; }.inventory .bag_pages { text-shadow: 0.1em 0.1em 0.2em #333333; }#windows .wear { height: 510px!important; }#inventory_search { text-align: center; }"),
+                            TWIR.Util.addCss(".instant_wear_container { z-index: 9999;bottom: 0px!important; text-align: right!important; }.search_container { z-index: 5!important;position: absolute!important;width: 100%;height: auto!important;left: 0px!important;right: unset!important; bottom: -11px!important; text-align: center; }.upgrade_items .textart_title { color: #ffe7b100!important;margin-left: 0px!important;margin-right: 0px!important; } .inventory .actions .upgrade_items { float: left!important;min-width: 16px!important;width: 16px!important;z-index: 999!important;position: relative!important;display: inline-block!important; } #bag .item.item_inventory { margin-bottom: 0px!important;width: 60px!important;height: 58px!important; } #bag .item_inventory_img { margin-left: 0px; margin-top: 3px; } #windows .inventory .filters { height: 40px!important;position: absolute!important;top: 54px!important;margin: unset!important;box-shadow: 0 0 20px inset;background: url(" + TWIR.images.menubg + "); border: 3px solid transparent; }#bag { height: 100%!important;text-align: center!important;color: #4d392c!important;overflow: hidden!important;padding-left: 3px;border-radius: 3px;padding-top: 3px;padding-bottom: 3px; box-shadow: 0 0 20px inset;background: url(" + TWIR.images.bagbg + ");background-size: 100% auto; }#CC_pin_items { float:left!important;position:relative!important;display:inline-block!important; }@keyframes fadeIn   { 0%{opacity:0}100%{opacity:1}}#twir_donate_button:hover { background: url(" + TWIR.images.menuiconhover + ")!important; }.tw2gui_window_buttons { width: auto!important; }div.tw2gui_window.inventory div.tw2gui_inner_window_bg { background:url(/images/window/premium/premium_buy_bg_large.jpg)!important;background-position:center!important;background-repeat:no-repeat!important;background-size:100% 100%!important; }div.tw2gui_selectbox ul.tw2gui_selectbox_content { min-width: 100px!important; }.inventory .filters .filter_inventory, .filter_inventory { display:inline-block;height:35px!important;width:35px!important;margin-top:1px;background:none;vertical-align:middle;cursor:pointer;border-radius:25%; box-shadow:inset 0 0 5px 2px #4d392c,inset 0 0 2px 1px #222; opacity: 0.75; }.filter_inventory:hover { opacity: 1!important; }.inventory .filters .filter_yield { display: none!important; }.inventory .filters .filter_yield:active { display: none!important; }.inventory .filters .filter_upgradeable { display: none!important; }.inventory .filters .filter_upgradeable:active { display: none!important; }.inventory .actions { text-align:center;position:absolute!important;top:14px!important; }.inventory .actions .TWX_sellable_button { position:relative!important;float:left;display:inline-block!important;} .inventory .no-items { filter:opacity(30%) grayscale(50)!important;cursor:default!important; pointer-events: none!important; }.twir_open_search {position: absolute !important;right: 41px; display: inline-block; }.twir_open_set_collector { position: absolute !important; right: 5px; display: inline-block; } .inventory .bag_navigation { position: absolute!important; bottom: -8px!important; right: 0px!important; background: url(" + TWIR.images.menubg + "); box-shadow: inset 0 0 5px 0 #000010;border: 2px solid transparent; z-index: 5; }.inventory .bag_pages { text-shadow: 0.1em 0.1em 0.2em #333333; }#windows .wear { height: 510px!important; }#inventory_search { text-align: center; }"),
                             /*! Small Inv */
                             small_inv ? TWIR.Util.addCss("#windows .inventory { min-width: 553.5px!important; height: 513px!important; }#twir_inventory_content { width: 506px!important; }#bag { width: 488px!important; }.inventory .actions { width:520px!important; }.twir_filters_usable { width: 142px; left: 354px;  padding: 0px 0px 0px 0px;}#windows .inventory .filters { width: 355px!important; left: -4px!important; padding: 0px 0px 0px 0px;}.inventory .filters .filter_inventory, .filter_inventory { margin-left:0px;margin-right:0.5px;}.instant_wear_container { left: 242px!important;}") : TWIR.Util.addCss("#windows .inventory {min-width: 736.5px!important; height: 513px!important;}#twir_inventory_content { width: 689px!important; }#bag { width: 671px!important; }.inventory .actions { width:700px!important; }.twir_filters_usable { width: 120px;left: 548px; padding: 0px 5.5px 0px 5.5px; }.twir_filters_yields { width: 120px;}#windows .inventory .filters { width: 400px!important; left: 0px!important; padding: 0px 5.5px 0px 5.5px;}.inventory .filters .filter_inventory, .filter_inventory { margin-left:2px;margin-right:3px;}.instant_wear_container { left: 425px!important;}");
                         for (var a = 0; a < dupled.length; a++) TWIR.Util.addCss(".inventory .filters .filter_" + dupled[a] + ", .inventory .filters .filter_" + dupled[a] + ".active, .filter_" + dupled[a] + "{ background: url(" + TWIR.images.inv_category[dupled[a]] + ")!important; background-repeat: no-repeat; background-position: center!important; background-size: 30px 30px!important; opacity: 0.75}");
