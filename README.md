@@ -31,11 +31,6 @@ New Inventory with new features.  <br />
 <img src="https://tomrobert.github.io/TWIR/docs/screenshots/Screenshot_20.png" style="max-width: 600px;">
 <img src="https://tomrobert.github.io/TWIR/docs/screenshots/Screenshot_22.png" style="max-width: 600px;">
 
-**Opener**  <br />
-Open multiple chests at once <br />
-<img src="https://tomrobert.github.io/TWIR/docs/screenshots/Screenshot_3.png" style="max-width: 600px;">
-<img src="https://tomrobert.github.io/TWIR/docs/screenshots/Screenshot_4.png" style="max-width: 600px;">
-
 **Reminder**  <br />
 Get a notification when items are ready to collect. <br />
 Advent calendar supported. <br />
