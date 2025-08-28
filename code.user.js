@@ -17,7 +17,7 @@
 // @description:tr The-west için daha iyi envanter ve araçlar!
 
 // @author Tom Robert, TauraScript, Jamza
-// @version 2.204.8
+// @version 2.204.9
 // @license GPL-3.0 http://www.gnu.org/licenses/gpl-3.0.txt
 
 // @include https://*.the-west.*/game.php*
@@ -55,7 +55,7 @@
             .addButton("OK")
             .show() : (window.TWIR_lang = {}, window.TWIR = {
                 name: "TW Inventory Reloaded",
-                version: "2.204.8",
+                version: "2.204.9",
                 author: "Tom Robert, TauraScript, Jamza",
                 minGame: "2.05",
                 maxGame: Game.version.toString(),
@@ -1374,253 +1374,6 @@
                                     .append(A.getMainDiv())), $(a.getContentPane())
                                 .hide()
                                 .fadeIn()
-                        }
-                    }
-                },
-                Opener:
-                {
-                    init: function()
-                    {
-                        var e = this;
-                        $(document)
-                            .on("keydown", function(t)
-                            {
-                                if (16 == t.which)
-                                {
-                                    var i = $("input:focus");
-                                    0 == i.length && (i = $("textarea:focus")), 0 != i.length && (e.shiftFocus = i)
-                                }
-                            }), TWIR.Util.addCss("div.game-reward.twir_Easter { background: url(" + TWIR.images.game_reward.Easter + ") no-repeat !important; background-position: 5px 4px !important; }div.game-reward.twir_Independence { background: url(" + TWIR.images.game_reward.Independence + ") no-repeat !important; background-position: 5px 4px !important; }div.game-reward.twir_Octoberfest { background: url(" + TWIR.images.game_reward.Octoberfest + ") no-repeat !important; background-position: 5px 4px !important; }")
-                    },
-                    clickHandler: function(e, t)
-                    {
-                        var i = Bag.getItemByItemId(e);
-                        if (t.shiftKey && (!this.shiftFocus || !this.shiftFocus.is(":visible")))
-                        {
-                            var a = i.obj;
-                            if (i.count > 2 && !a.unique && TWIR.Usebonuses.isOpenable(i))
-                            {
-                                var r = $(t.target),
-                                    n = r.offset()
-                                    .left + r.width() / 2,
-                                    o = r.offset()
-                                    .top;
-                                this.showDialog(e, n, o)
-                            }
-                        }
-                    },
-                    showDialog: function(e, t, i)
-                    {
-                        var a = this;
-                        if (a.GuiDialog_1 && a.GuiDialog_1.getMainDiv()
-                            .is(":visible") && a.GuiDialog_1.hide(), !a.processing)
-                        {
-                            var r = $('<div style="text-align: center; width: 250px; position: relative;"></div>'),
-                                n = ItemManager.get(e),
-                                o = Bag.getItemByItemId(e),
-                                A = $('<div style="margin-bottom: 5px; font-size: 12pt;">' + TWIR_lang.opener.open_question + "</div>"),
-                                s = new tw2widget.gametip("999? " + TWIR_lang.opener.open_joke, "twir_reminder"),
-                                l = (new west.gui.Textfield)
-                                .onlyNumeric()
-                                .maxlength(3)
-                                .setWidth(40),
-                                g = new west.gui.Button(TWIR_lang.opener.open_btn, function()
-                                {
-                                    var t = parseInt(l.getValue());
-                                    g.disable(), p.off("click"), l.getField()
-                                        .off("input paste"), 999 === t && A.after(s.getMainDiv()), setTimeout(function()
-                                        {
-                                            a.massOpen(t, e), a.GuiDialog_1.hide()
-                                        }, 999 === t ? 3e3 : 100)
-                                });
-                            g.disable(), l.getField()
-                                .on("input paste", TWIR.Util.delay(function(e)
-                                {
-                                    $(this)
-                                        .val() > o.count ? $(this)
-                                        .val(o.count) : $(this)
-                                        .val() < 1 && $(this)
-                                        .val(1), g.enable()
-                                }, 500));
-                            var p = $('<span class="linkstyle">(' + o.count + ")</span>");
-                            p.on("click", function()
-                            {
-                                l.setValue(o.count), g.enable()
-                            }), r.append($('<div class="bag_item"></div>')
-                                .append(new tw2widget.Item(n)
-                                    .setShowcompare(!1)
-                                    .getMainDiv()), A, l.getMainDiv(), p);
-                            var I = a.GuiDialog_1 = new west.gui.Dialog("", r)
-                                .setPosition(t, i)
-                                .show(),
-                                c = $(".tw2gui_dialog_actions", I.getMainDiv());
-                            0 === c.length && (c = $('<div class="tw2gui_dialog_actions" style="text-align: center;"/>'), $(".tw2gui_dialog_content", I.getMainDiv())
-                                    .after(c)), c.append(g.getMainDiv()), $(".tw2gui_inner_window_title", I.getMainDiv())
-                                .empty()
-                                .css(
-                                {
-                                    height: "20px"
-                                }), $(".tw2gui_dialog_content", I.getMainDiv())
-                                .css(
-                                {
-                                    "padding-bottom": "3px"
-                                }), I.getMainDiv()
-                                .css(
-                                {
-                                    "min-width": "unset"
-                                }), I.twir_addCloseButton(), I.setX(t - I.getMainDiv()
-                                    .width() / 2), I.setY(i - I.getMainDiv()
-                                    .height() + 15), l.focus()
-                        }
-                    },
-                    massOpen: function(e, t)
-                    {
-                        var i = this;
-                        try
-                        {
-                            i.GuiDialog_2 && i.GuiDialog_2.getMainDiv()
-                                .is(":visible") && i.GuiDialog_2.hide();
-                            var a = $('<div style="text-align: center; min-width: 325px; max-width: 600px;"></div>'),
-                                r = $('<div style="width: 305px; height: 65px;margin-bottom: 5px;"></div>'),
-                                n = new west.gui.Scrollpane,
-                                o = new west.gui.Progressbar(0, e),
-                                A = new west.gui.Button(TWIR_lang.informative.cancel.toLowerCase(), function()
-                                {
-                                    o.setColor("red"), i.t && window.clearTimeout(i.t), i.processing = !1, I()
-                                });
-                            a.append($("<div></div>")
-                                .append(o.getMainDiv()), $('<div style="line-height: 30px;">' + TWIR_lang.opener.loot_text + " ..... :</div>"), r.append(n.getMainDiv()));
-                            var s = i.GuiDialog_2 = new west.gui.Dialog("", a)
-                                .setDraggable(!0)
-                                .setModal(!0, !1,
-                                {
-                                    bg: "/images/curtain_bg.png",
-                                    opacity: .7
-                                })
-                                .show(),
-                                l = $(".tw2gui_dialog_actions", s.getMainDiv());
-                            0 === l.length && (l = $('<div class="tw2gui_dialog_actions" style="text-align: center;"/>'), $(".tw2gui_dialog_content", s.getMainDiv())
-                                    .after(l)), l.append(A.getMainDiv()), $(".tw2gui_inner_window_title", s.getMainDiv())
-                                .empty()
-                                .css(
-                                {
-                                    height: "20px"
-                                }), $(".tw2gui_dialog_content", s.getMainDiv())
-                                .css(
-                                {
-                                    "padding-bottom": "3px"
-                                }), s.getMainDiv()
-                                .css(
-                                {
-                                    "min-width": "unset"
-                                });
-                            var g = function(e, t)
-                            {
-                                o.setValue(e), t && o.setMaxValue(t)
-                            };
-                            g(0, e);
-                            var p = function(e, t)
-                            {
-                                var i = 65 * t,
-                                    a = 65 * Math.ceil(t / 9);
-                                e.css(
-                                    {
-                                        float: "none",
-                                        display: "inline-block"
-                                    }), n.getContentPane()
-                                    .append(e), r.width() < i && i <= 585 && r.width(i + 15), r.height() < a && a <= 195 && r.height(a)
-                            };
-
-                            function I()
-                            {
-                                A.disable(), A.setVisible(!1), i.GuiDialog_2.addButton("ok", function()
-                                {
-                                    i.GuiDialog_2.hide()
-                                })
-                            }! function(e, t, a)
-                            {
-                                var r = Bag.getItemByItemId(e);
-                                if (!r) return;
-                                i.processing = !0, t > r.count && (t = r.count);
-                                t > 999 && (t = 999);
-                                var n = 1,
-                                    o = {},
-                                    A = [];
-                                ! function e(r)
-                                {
-                                    Ajax.remoteCall("itemuse", "use_item",
-                                    {
-                                        item_id: r,
-                                        lastInvId: Bag.getLastInvId()
-                                    }, function(s)
-                                    {
-                                        if (s.error) return new UserMessage(s.msg, UserMessage.TYPE_ERROR)
-                                            .show();
-                                        Bag.updateChanges(s.msg.changes), EventHandler.signal("item_used", [r]);
-                                        for (var l = 0; l < s.msg.effects.length; l++)
-                                        {
-                                            var c = s.msg.effects[l];
-                                            switch (c.type)
-                                            {
-                                                case "experience":
-                                                case "dollar":
-                                                case "coupons":
-                                                case "ses":
-                                                    var d = Math.ceil(c[c.type] || c.amount);
-                                                    if (o[c.type]) d += o[c.type].count, o[c.type].count = d, o[c.type].itm.setValue(d);
-                                                    else
-                                                    {
-                                                        switch (o[c.type] = {}, o[c.type].count = d, c.type)
-                                                        {
-                                                            case "experience":
-                                                                o[c.type].itm = new tw2widget.reward.ExpReward(d);
-                                                                break;
-                                                            case "dollar":
-                                                                o[c.type].itm = new tw2widget.reward.DollarReward(d);
-                                                                break;
-                                                            case "coupons":
-                                                                o[c.type].itm = new tw2widget.reward.BondReward(d);
-                                                                break;
-                                                            case "ses":
-                                                                o[c.type].itm = new tw2widget.reward.BaseReward(c.name, c.amount, c.event + " twir_" + c.event)
-                                                        }
-                                                        o[c.type].itm.getMainDiv()
-                                                            .css("height", "58px"), p(o[c.type].itm.getMainDiv(), Object.keys(o)
-                                                                .length)
-                                                    }
-                                                    g(n);
-                                                    break;
-                                                case "lottery":
-                                                case "content":
-                                                    c.items.each(function(e)
-                                                    {
-                                                        var t = ItemManager.get(e.item_id),
-                                                            i = TWIR.Usebonuses.getLootChance(r, e.item_id),
-                                                            a = e.count;
-                                                        o[e.item_id] ? (a += o[e.item_id].count, o[e.item_id].itm.setCount(a)) : (o[e.item_id] = {}, o[e.item_id].count = a, o[e.item_id].itm = new tw2widget.InventoryItem(t), o[e.item_id].itm.setCount(a)
-                                                            .setShowcompare(!1)
-                                                            .setShowpopup(!1), o[e.item_id].itm.getMainDiv()
-                                                            .addMousePopup(new ItemPopup(t,
-                                                                {
-                                                                    twir_partial_bonus: !1,
-                                                                    twir_market_price: !1
-                                                                })
-                                                                .popup), p(o[e.item_id].itm.getMainDiv(), Object.keys(o)
-                                                                .length), i && o[e.item_id].itm.divMain.append($('<p style="position: absolute; right: 3px; top: 3px; color: #fff;text-shadow: rgb(0, 0, 0) 0px 0px 5px;font-size: 9px;">' + i + "%</p>"))), o[e.item_id].count = a, i && (o[e.item_id].chance = i), g(n)
-                                                    })
-                                            }
-                                        }
-                                        n < t ? (n++, i.t = window.setTimeout(function()
-                                        {
-                                            e(r)
-                                        }, Math.floor(2e3 * Math.random() + 500))) : (A.push(o), i.processing = !1, I(), a && a(A))
-                                    })
-                                }(e)
-                            }(t, e)
-                        }
-                        catch (e)
-                        {
-                            TWIR.error(e, "Opener.massOpen")
                         }
                     }
                 },
@@ -7028,19 +6781,10 @@
                             {
                                 try
                                 {
-                                    if (e.getMainDiv()
-                                        .click(function(t)
-                                        {
-                                            TWIR.Opener.clickHandler(e.getId(), t)
-                                        }), TWIR.Util.isJokeTime() && (e = joke_rotate(e)), (e.obj.usebonus || e.obj.action || e.isJobItem()) && (e.tooltip.options.show_compare = !1), e.count > 2 && TWIR.Usebonuses.isOpenable(e))
-                                    {
-                                        var t = new ItemPopup(ItemManager.get(e.getId()), e.tooltip.options)
-                                            .popup;
-                                        t.text = t.text.replace(/<div class="invPopup_body\s{0,1}.*?">(?:<table>)/g, '$& <div style="color: #8b4513; text-align:center">' + TWIR_lang.tooltips.opener_tooltip + "</div>"), e.getMainDiv()
-                                            .addMousePopup(t)
-                                    }
-                                    else e.getMainDiv()
-                                        .addMousePopup(e.tooltip.popup)
+                                  //MassOpener removed
+                                  
+                                  e.getMainDiv()
+                                      .addMousePopup(e.tooltip.popup);
                                 }
                                 catch (e)
                                 {
@@ -7566,7 +7310,7 @@
                                     }
                                     else if ("bonus_medal" === g.spec_type && "use" === g.usetype || 50991e3 === g.item_id) s("premium", g.item_id);
                                     else if ("none" === g.usetype || "jobdrop" === g.spec_type) o.includes(g.item_id) || o.push(g.item_id), s("quest", g.item_id);
-                                    else if ("use" === g.usetype)
+                                    else if ("use" === g.usetype || "single" === g.usetype)
                                     {
                                         if (a.hasUsebonus(g))
                                             for (var p = 0; p < g.usebonus.length; p++)
